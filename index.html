@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Какой у тебя тип привязанности? — Алекс Коваль</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: #0F0D0B;
+    color: #F0EBE0;
+    font-family: 'Lato', sans-serif;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+  }
+
+  .container { max-width: 640px; width: 100%; margin: 0 auto; }
+
+  .progress-wrap {
+    margin-bottom: 40px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  .progress-bar {
+    flex: 1; height: 1px;
+    background: rgba(240,235,224,0.15);
+    position: relative; overflow: hidden;
+  }
+  .progress-fill {
+    height: 100%; background: #D4A853;
+    transition: width 0.5s ease; width: 0%;
+  }
+  .progress-text {
+    font-size: 11px; letter-spacing: 2px;
+    color: #D4A853; text-transform: uppercase;
+    font-weight: 300; white-space: nowrap;
+  }
+
+  .screen { display: none; animation: fadeIn 0.4s ease; }
+  .screen.active { display: block; }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .intro-label {
+    font-size: 10px; letter-spacing: 4px;
+    text-transform: uppercase; color: #D4A853;
+    margin-bottom: 32px; font-weight: 400;
+  }
+  .intro-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 48px; font-weight: 300;
+    line-height: 1.15; margin-bottom: 24px; color: #F0EBE0;
+  }
+  .intro-title em { font-style: italic; color: #D4A853; }
+  .intro-desc {
+    font-size: 15px; line-height: 1.7;
+    color: rgba(240,235,224,0.65);
+    margin-bottom: 40px; font-weight: 300;
+  }
+
+  .btn-start {
+    background: #D4A853; color: #0F0D0B;
+    border: none; padding: 16px 40px;
+    font-family: 'Lato', sans-serif;
+    font-size: 13px; letter-spacing: 3px;
+    text-transform: uppercase; cursor: pointer;
+    font-weight: 700; transition: all 0.2s;
+  }
+  .btn-start:hover { background: #E8C070; transform: translateY(-1px); }
+
+  .q-num {
+    font-size: 10px; letter-spacing: 4px;
+    text-transform: uppercase;
+    color: rgba(240,235,224,0.35);
+    margin-bottom: 20px; font-weight: 400;
+  }
+  .q-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px; font-weight: 400;
+    line-height: 1.4; margin-bottom: 36px; color: #F0EBE0;
+  }
+
+  .options { display: flex; flex-direction: column; gap: 12px; }
+  .option {
+    border: 1px solid rgba(240,235,224,0.12);
+    padding: 18px 22px; cursor: pointer;
+    transition: all 0.2s;
+    display: flex; align-items: flex-start; gap: 16px;
+    background: rgba(255,255,255,0.02);
+  }
+  .option:hover {
+    border-color: rgba(212,168,83,0.5);
+    background: rgba(212,168,83,0.05);
+    transform: translateX(4px);
+  }
+  .option.selected {
+    border-color: #D4A853;
+    background: rgba(212,168,83,0.08);
+  }
+  .option-letter {
+    font-size: 10px; letter-spacing: 2px;
+    color: #D4A853; font-weight: 700;
+    padding-top: 3px; min-width: 16px;
+  }
+  .option-text {
+    font-size: 15px; line-height: 1.55;
+    color: rgba(240,235,224,0.8); font-weight: 300;
+  }
+
+  .email-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 36px; font-weight: 300;
+    margin-bottom: 16px; line-height: 1.3;
+  }
+  .email-sub {
+    font-size: 14px; color: rgba(240,235,224,0.55);
+    margin-bottom: 32px; line-height: 1.6; font-weight: 300;
+  }
+  .email-input {
+    width: 100%;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(240,235,224,0.2);
+    padding: 15px 18px; font-size: 15px;
+    color: #F0EBE0; font-family: 'Lato', sans-serif;
+    margin-bottom: 12px; outline: none; transition: border 0.2s;
+  }
+  .email-input:focus { border-color: #D4A853; }
+  .email-input::placeholder { color: rgba(240,235,224,0.3); }
+  .btn-result {
+    width: 100%; background: #D4A853; color: #0F0D0B;
+    border: none; padding: 16px;
+    font-family: 'Lato', sans-serif;
+    font-size: 13px; letter-spacing: 3px;
+    text-transform: uppercase; cursor: pointer;
+    font-weight: 700; transition: all 0.2s; margin-bottom: 12px;
+  }
+  .btn-result:hover { background: #E8C070; }
+  .skip-link {
+    font-size: 12px; color: rgba(240,235,224,0.3);
+    cursor: pointer; text-decoration: underline;
+    display: block; text-align: center; padding: 8px;
+  }
+  .skip-link:hover { color: rgba(240,235,224,0.6); }
+
+  .result-tag {
+    display: inline-block;
+    border: 1px solid #D4A853; color: #D4A853;
+    font-size: 10px; letter-spacing: 4px;
+    text-transform: uppercase;
+    padding: 6px 14px; margin-bottom: 28px; font-weight: 400;
+  }
+  .result-type {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 44px; font-weight: 300;
+    line-height: 1.2; margin-bottom: 28px; color: #F0EBE0;
+  }
+  .result-type em { font-style: italic; color: #D4A853; }
+  .result-desc {
+    font-size: 15px; line-height: 1.8;
+    color: rgba(240,235,224,0.72);
+    margin-bottom: 40px; font-weight: 300;
+    border-left: 2px solid rgba(212,168,83,0.3);
+    padding-left: 20px;
+  }
+  .cta-block {
+    background: rgba(212,168,83,0.06);
+    border: 1px solid rgba(212,168,83,0.2);
+    padding: 28px; margin-bottom: 24px;
+  }
+  .cta-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px; margin-bottom: 10px; font-weight: 400;
+  }
+  .cta-text {
+    font-size: 14px; color: rgba(240,235,224,0.6);
+    line-height: 1.6; margin-bottom: 20px; font-weight: 300;
+  }
+  .btn-cta {
+    background: transparent; color: #D4A853;
+    border: 1px solid #D4A853; padding: 13px 28px;
+    font-family: 'Lato', sans-serif;
+    font-size: 12px; letter-spacing: 3px;
+    text-transform: uppercase; cursor: pointer;
+    font-weight: 700; transition: all 0.2s;
+    text-decoration: none; display: inline-block;
+  }
+  .btn-cta:hover { background: #D4A853; color: #0F0D0B; }
+  .restart {
+    font-size: 12px; color: rgba(240,235,224,0.25);
+    cursor: pointer; text-decoration: underline;
+    display: block; text-align: center; margin-top: 16px;
+  }
+  .restart:hover { color: rgba(240,235,224,0.5); }
+  .divider {
+    width: 40px; height: 1px;
+    background: #D4A853; margin: 32px 0;
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <div class="progress-wrap" id="progress" style="display:none">
+    <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+    <div class="progress-text" id="progressText">1 / 12</div>
+  </div>
+
+  <div class="screen active" id="screen-intro">
+    <div class="intro-label">Алекс Коваль · Тест</div>
+    <h1 class="intro-title">Какой у тебя<br><em>тип привязанности?</em></h1>
+    <p class="intro-desc">12 вопросов о том, как ты ведёшь себя в отношениях — не как думаешь, что должна, а как есть на самом деле. Никаких правильных ответов. Только честность.</p>
+    <button class="btn-start" onclick="startQuiz()">Начать</button>
+  </div>
+
+  <div class="screen" id="screen-question">
+    <div class="q-num" id="qNum">Вопрос 1 из 12</div>
+    <div class="q-text" id="qText"></div>
+    <div class="options" id="options"></div>
+  </div>
+
+  <div class="screen" id="screen-email">
+    <h2 class="email-title">Почти готово.</h2>
+    <p class="email-sub">Оставь email — пришлю подробный гид по твоему типу привязанности: как он проявляется в отношениях, что за ним стоит и с чего начать работу.</p>
+    <input class="email-input" type="email" id="emailInput" placeholder="твой@email.com">
+    <button class="btn-result" onclick="showResult()">Показать результат</button>
+    <span class="skip-link" onclick="showResult()">Пропустить</span>
+  </div>
+
+  <div class="screen" id="screen-result">
+    <div class="result-tag">Твой результат</div>
+    <h2 class="result-type" id="resultType"></h2>
+    <div class="divider"></div>
+    <p class="result-desc" id="resultDesc"></p>
+    <div class="cta-block">
+      <div class="cta-title">Хочешь разобрать свою ситуацию?</div>
+      <p class="cta-text">Напиши слово <strong>РАЗБОР</strong> в директ — я отвечаю лично и объясню что конкретно это значит для тебя.</p>
+      <!-- ЗАМЕНИ ССЫЛКУ НА СВОЙ INSTAGRAM -->
+      <a class="btn-cta" href="https://www.instagram.com/alexkoval.oficial" target="_blank">Написать в Instagram</a>
+    </div>
+    <span class="restart" onclick="restart()">Пройти ещё раз</span>
+  </div>
+
+</div>
+
+<script>
+const questions = [
+  {
+    text: "Он написал «Всё нормально» после вашей ссоры. Ты:",
+    options: [
+      { letter: "А", text: "Окей, значит нормально. Напишет когда захочет поговорить.", type: "S" },
+      { letter: "Б", text: "Перечитываешь раз двадцать. «Нормально» — это точно не нормально.", type: "A" },
+      { letter: "В", text: "Тебе тоже не до разговоров. Ответила «Хорошо» и занялась своим.", type: "V" }
+    ]
+  },
+  {
+    text: "Когда вы спорите, твой первый импульс:",
+    options: [
+      { letter: "А", text: "Сказать что думаешь — и дать ему то же самое.", type: "S" },
+      { letter: "Б", text: "Сделать всё что угодно, лишь бы не было разрыва.", type: "A" },
+      { letter: "В", text: "Замолчать. Разберёшься сама — без него.", type: "V" }
+    ]
+  },
+  {
+    text: "Он не отвечает 4 часа. Ты:",
+    options: [
+      { letter: "А", text: "Люди бывают заняты. Напомнишь себе об этом и идёшь дальше.", type: "S" },
+      { letter: "Б", text: "Уже придумала три сценария почему молчит. Ни один не хороший.", type: "A" },
+      { letter: "В", text: "«Опять». Закрываешь телефон.", type: "V" }
+    ]
+  },
+  {
+    text: "Он говорит «Я тебя люблю» первым. Внутри:",
+    options: [
+      { letter: "А", text: "Тепло. Ты рада.", type: "S" },
+      { letter: "Б", text: "Радость — и сразу желание убедиться что это правда.", type: "A" },
+      { letter: "В", text: "Небольшой дискомфорт. Как будто тебя загнали в угол.", type: "V" }
+    ]
+  },
+  {
+    text: "Отношения стали стабильными и предсказуемыми. Что чувствуешь?",
+    options: [
+      { letter: "А", text: "Облегчение. Именно этого и хотела.", type: "S" },
+      { letter: "Б", text: "Рада — но теперь боишься потерять то что наконец нашла.", type: "A" },
+      { letter: "В", text: "Непонятная скука. Что-то исчезло.", type: "V" }
+    ]
+  },
+  {
+    text: "Он предлагает провести вместе всё выходные. Ты:",
+    options: [
+      { letter: "А", text: "С удовольствием. Скажешь если захочется побыть одной.", type: "S" },
+      { letter: "Б", text: "Рада. Хотя бы точно знаешь где он и с кем.", type: "A" },
+      { letter: "В", text: "Соглашаешься, но уже думаешь как вырвать хотя бы пару часов для себя.", type: "V" }
+    ]
+  },
+  {
+    text: "Мужчина то горячий, то холодный. Непредсказуемый. Ты:",
+    options: [
+      { letter: "А", text: "Быстро теряешь интерес. Нестабильность не твоё.", type: "S" },
+      { letter: "Б", text: "Он занимает всю твою голову. Хочешь понять что не так.", type: "A" },
+      { letter: "В", text: "Нравится — хотя бы не давит.", type: "V" }
+    ]
+  },
+  {
+    text: "Надёжный, внимательный мужчина проявляет интерес. Ты:",
+    options: [
+      { letter: "А", text: "Отвечаешь — это именно то что тебе нравится.", type: "S" },
+      { letter: "Б", text: "Боишься спугнуть или оказаться недостаточно хорошей для него.", type: "A" },
+      { letter: "В", text: "Что-то вроде скуки или настороженности. Почему-то не цепляет.", type: "V" }
+    ]
+  },
+  {
+    text: "После расставания ты обычно:",
+    options: [
+      { letter: "А", text: "Грустишь, потом отпускаешь и идёшь дальше.", type: "S" },
+      { letter: "Б", text: "Долго анализируешь что сделала не так и можно ли было изменить исход.", type: "A" },
+      { letter: "В", text: "Быстро уходишь в работу, в себя, куда угодно. Переключаешься.", type: "V" }
+    ]
+  },
+  {
+    text: "Когда тебе нужна поддержка, ты:",
+    options: [
+      { letter: "А", text: "Говоришь об этом напрямую. Близким людям можно.", type: "S" },
+      { letter: "Б", text: "Намекаешь и ждёшь что он сам заметит и спросит.", type: "A" },
+      { letter: "В", text: "Справляешься сама. Просить неудобно. Да и непривычно.", type: "V" }
+    ]
+  },
+  {
+    text: "Твой внутренний голос чаще говорит:",
+    options: [
+      { letter: "А", text: "«Разберёмся. Всё будет нормально.»", type: "S" },
+      { letter: "Б", text: "«Он скоро уйдёт — это только вопрос времени.»", type: "A" },
+      { letter: "В", text: "«Люди в итоге всегда разочаровывают. Лучше не привязываться.»", type: "V" }
+    ]
+  },
+  {
+    text: "Если бы ты описала своё отношение к близости одним образом:",
+    options: [
+      { letter: "А", text: "Дом — туда хочется возвращаться.", type: "S" },
+      { letter: "Б", text: "Огонь — красиво, но можно обжечься в любой момент.", type: "A" },
+      { letter: "В", text: "Открытое окно — нужен воздух, но стекло всегда рядом.", type: "V" }
+    ]
+  }
+];
+
+const results = {
+  S: {
+    type: "Надёжный тип<br><em>привязанности</em>",
+    desc: "Ты умеешь быть рядом — и умеешь отпускать. Не потому что тебе всё равно, а потому что ты доверяешь: себе, другому человеку, самому процессу. Конфликты тебя не разрушают. Расставание — больно, но не смертельно. Ты редкость — и нет, это не комплимент из вежливости. Большинство людей вокруг живут либо в постоянной тревоге, либо за стеной. Ты где-то посередине — и это либо результат счастливого детства, либо серьёзной работы над собой. Обычно — второе."
+  },
+  A: {
+    type: "Тревожный тип<br><em>привязанности</em>",
+    desc: "Ты любишь глубоко — это правда. Но вместе с глубиной идёт постоянный фоновый страх: что тебя оставят, не заметят, выберут кого-то другого. Ты можешь делать для человека всё — и при этом внутри чувствовать что этого недостаточно. Ты ищешь подтверждения не потому что ненасытна, а потому что в какой-то момент близость оказалась непредсказуемой. И ты до сих пор в этом не уверена."
+  },
+  V: {
+    type: "Избегающий тип<br><em>привязанности</em>",
+    desc: "Ты справляешься сама. Всегда. Это твоя сила — и твоя ловушка. Когда кто-то приближается слишком близко, что-то внутри начинает сворачиваться. Не потому что ты холодная — ты можешь быть очень тёплой. Но близость стоит тебе энергии. Самодостаточность — это не выбор, это защита, которую ты строила долго. И да, иногда ты сама не понимаешь почему «хороший мужчина» вызывает меньше чувств чем тот, кто явно не подходит."
+  },
+  AV: {
+    type: "Тревожно-избегающий<br><em>тип привязанности</em>",
+    desc: "Ты хочешь близости — и боишься её одновременно. Это не противоречие, это логика: где-то в твоей истории близость и боль шли рука об руку. Поэтому ты то тянешься, то отстраняешься. То хочешь чтобы он был рядом, то задыхаешься когда он рядом. Это самый редкий и самый сложный тип — не потому что ты «сломана», а потому что твоя нервная система учила тебя двум несовместимым вещам одновременно. Хорошая новость: это меняется. Плохая: само по себе — нет."
+  }
+};
+
+let current = 0;
+let scores = { S: 0, A: 0, V: 0 };
+let answers = [];
+
+function startQuiz() {
+  document.getElementById('progress').style.display = 'flex';
+  showQuestion(0);
+}
+
+function showQuestion(idx) {
+  showScreen('screen-question');
+  const q = questions[idx];
+  document.getElementById('qNum').textContent = `Вопрос ${idx + 1} из ${questions.length}`;
+  document.getElementById('qText').textContent = q.text;
+  const opts = document.getElementById('options');
+  opts.innerHTML = '';
+  q.options.forEach((opt, i) => {
+    const div = document.createElement('div');
+    div.className = 'option' + (answers[idx] === i ? ' selected' : '');
+    div.innerHTML = `<span class="option-letter">${opt.letter}</span><span class="option-text">${opt.text}</span>`;
+    div.onclick = () => selectOption(idx, i, opt.type);
+    opts.appendChild(div);
+  });
+  updateProgress(idx + 1);
+}
+
+function selectOption(qIdx, optIdx, type) {
+  if (answers[qIdx] !== undefined) {
+    const prevType = questions[qIdx].options[answers[qIdx]].type;
+    scores[prevType]--;
+  }
+  answers[qIdx] = optIdx;
+  scores[type]++;
+  document.querySelectorAll('.option').forEach((el, i) => {
+    el.classList.toggle('selected', i === optIdx);
+  });
+  setTimeout(() => {
+    if (qIdx < questions.length - 1) {
+      current = qIdx + 1;
+      showQuestion(current);
+    } else {
+      showScreen('screen-email');
+      document.getElementById('progress').style.display = 'none';
+    }
+  }, 400);
+}
+
+function updateProgress(n) {
+  const pct = ((n - 1) / questions.length) * 100;
+  document.getElementById('progressFill').style.width = pct + '%';
+  document.getElementById('progressText').textContent = `${n} / ${questions.length}`;
+}
+
+function showResult() {
+  const resultKey = getResultKey();
+  const r = results[resultKey];
+  document.getElementById('resultType').innerHTML = r.type;
+  document.getElementById('resultDesc').textContent = r.desc;
+  showScreen('screen-result');
+}
+
+function getResultKey() {
+  const diff = Math.abs(scores.A - scores.V);
+  if (diff <= 2 && scores.A >= 3 && scores.V >= 3) return 'AV';
+  if (scores.S >= scores.A && scores.S >= scores.V) return 'S';
+  if (scores.A >= scores.V) return 'A';
+  return 'V';
+}
+
+function showScreen(id) {
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  window.scrollTo(0, 0);
+}
+
+function restart() {
+  current = 0;
+  scores = { S: 0, A: 0, V: 0 };
+  answers = [];
+  document.getElementById('progress').style.display = 'none';
+  showScreen('screen-intro');
+}
+</script>
+</body>
+</html>
