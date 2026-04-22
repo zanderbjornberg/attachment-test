@@ -227,13 +227,30 @@
     <div class="options" id="options"></div>
   </div>
 
-  <div class="screen" id="screen-email">
-    <h2 class="email-title">Почти готово.</h2>
-    <p class="email-sub">Оставь email — пришлю подробный гид по твоему типу привязанности: как он проявляется в отношениях, что за ним стоит и с чего начать работу.</p>
-    <input class="email-input" type="email" id="emailInput" placeholder="твой@email.com">
-    <button class="btn-result" onclick="showResult()">Показать результат</button>
-    <span class="skip-link" onclick="showResult()">Пропустить</span>
+  <div id="screen-email" class="screen">
+  <h2 style="font-family:'Cormorant Garamond', serif; font-size: 32px; margin-bottom: 24px; color: #D4A853;">
+    Анализ завершен.
+  </h2>
+  
+  <div style="font-size: 16px; line-height: 1.7; color: rgba(240,235,224,0.9); font-weight: 300; margin-bottom: 32px;">
+    <p style="margin-bottom: 16px;">
+      Твой результат готов. Но давай честно: знание своего типа привязанности само по себе <b>не меняет ровным счетом ничего</b>. 
+    </p>
+    <p style="margin-bottom: 16px;">
+      Ты можешь прочитать сотни книг, но в момент, когда он не ответит на смс, твоя лимбическая система всё равно выключит мозг и заставит тебя совершить ту же ошибку. Снова.
+    </p>
+    <p style="margin-bottom: 16px; border-left: 2px solid #D4A853; padding-left: 20px; font-style: italic;">
+      Я занимаюсь этим 20 лет. Я видел тысячи таких циклов. Самостоятельно из этого выходят единицы — те, у кого есть лишние 10 лет на эксперименты над своей жизнью. У тебя их нет.
+    </p>
+    <p>
+      Если ты здесь не для того, чтобы просто поразвлечься тестом, а чтобы закрыть этот вопрос навсегда — под результатом будет кнопка для связи.
+    </p>
   </div>
+
+  <button class="btn-result" onclick="showResult()" style="width: 100%;">
+    Показать мой тип и решение
+  </button>
+</div>
 
   <div class="screen" id="screen-result">
     <div class="result-tag">Твой результат</div>
@@ -242,9 +259,9 @@
     <p class="result-desc" id="resultDesc"></p>
     <div class="cta-block">
       <div class="cta-title">Хочешь разобрать свою ситуацию?</div>
-      <p class="cta-text">Напиши слово <strong>РАЗБОР</strong> в директ — я отвечаю лично и объясню что конкретно это значит для тебя.</p>
+      <p class="cta-text">Напиши мне в директ — я отвечаю лично и объясню что конкретно это значит для тебя на персональной консультации.</p>
       <!-- ЗАМЕНИ ССЫЛКУ НА СВОЙ INSTAGRAM -->
-      <a class="btn-cta" href="https://www.instagram.com/alexkoval.oficial" target="_blank">Написать в Instagram</a>
+      <a class="btn-cta" href="https://t.me/m/hmFZwqauYjcy" target="_blank">Написать в Telegram</a>
     </div>
     <span class="restart" onclick="restart()">Пройти ещё раз</span>
   </div>
