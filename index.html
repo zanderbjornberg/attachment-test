@@ -3,116 +3,133 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<meta name="theme-color" content="#0E0B0C">
+<meta name="theme-color" content="#F2EBDD">
 <title>Какой у вас тип привязанности? — Алекс Коваль</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..500&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
 
   :root {
-    --bg: #0E0B0C;
-    --bg-soft: #161213;
-    --bg-card: #1A1517;
-    --text: #F2EDE2;
-    --text-mute: rgba(242,237,226,0.55);
-    --text-faint: rgba(242,237,226,0.32);
-    --gold: #C9A56A;
-    --gold-soft: rgba(201,165,106,0.12);
-    --gold-line: rgba(201,165,106,0.25);
-    --wine: #B85450;
-    --wine-soft: rgba(184,84,80,0.10);
-    --border: rgba(242,237,226,0.10);
+    --bg: #F2EBDD;
+    --bg-soft: #EAE2D0;
+    --bg-card: #FFFFFF;
+    --bg-cream: #F8F3E7;
+    --ink: #1E1A14;
+    --ink-soft: #4A4239;
+    --ink-mute: #7A7066;
+    --ink-faint: rgba(30,26,20,0.32);
+    --line: rgba(30,26,20,0.10);
+    --line-soft: rgba(30,26,20,0.06);
+    --accent: #6B2D2D;
+    --accent-soft: rgba(107,45,45,0.08);
+    --accent-line: rgba(107,45,45,0.20);
+    --warm: #8B6B3D;
+    --warm-soft: rgba(139,107,61,0.10);
+    --danger: #8C3A2E;
+    --danger-soft: rgba(140,58,46,0.06);
   }
 
   html, body { background: var(--bg); }
 
   body {
-    color: var(--text);
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    color: var(--ink);
+    font-family: 'Manrope', -apple-system, BlinkMacSystemFont, sans-serif;
     font-weight: 400;
-    line-height: 1.5;
+    line-height: 1.55;
     min-height: 100vh;
     min-height: 100svh;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     overflow-x: hidden;
+    background-image:
+      radial-gradient(at 20% 10%, rgba(139,107,61,0.06) 0%, transparent 50%),
+      radial-gradient(at 80% 90%, rgba(107,45,45,0.04) 0%, transparent 50%);
   }
 
   .wrap {
-    max-width: 560px;
+    max-width: 600px;
     margin: 0 auto;
-    padding: 24px 22px 40px;
-    padding-bottom: calc(40px + env(safe-area-inset-bottom));
+    padding: 28px 22px 48px;
+    padding-bottom: calc(48px + env(safe-area-inset-bottom));
     min-height: 100vh;
     min-height: 100svh;
     display: flex;
     flex-direction: column;
   }
 
+  /* === ПРОГРЕСС === */
   .progress {
     display: none;
     align-items: center;
     gap: 14px;
-    margin-bottom: 32px;
-    padding-top: 4px;
+    margin-bottom: 36px;
   }
   .progress.show { display: flex; }
   .progress-bar {
     flex: 1;
     height: 2px;
-    background: rgba(242,237,226,0.08);
+    background: rgba(30,26,20,0.08);
     border-radius: 2px;
     overflow: hidden;
   }
   .progress-fill {
     height: 100%;
-    background: var(--gold);
+    background: var(--accent);
     width: 0%;
-    transition: width 0.45s cubic-bezier(.4,0,.2,1);
+    transition: width 0.5s cubic-bezier(.4,0,.2,1);
   }
   .progress-text {
     font-size: 11px;
-    letter-spacing: 2px;
-    color: var(--gold);
-    font-weight: 500;
+    letter-spacing: 2.5px;
+    color: var(--accent);
+    font-weight: 600;
     white-space: nowrap;
     font-feature-settings: "tnum";
   }
 
+  /* === ЭКРАНЫ === */
   .screen { display: none; flex: 1; flex-direction: column; }
-  .screen.active { display: flex; animation: fade .35s ease; }
+  .screen.active { display: flex; animation: fade .4s ease; }
   @keyframes fade {
-    from { opacity: 0; transform: translateY(6px); }
+    from { opacity: 0; transform: translateY(8px); }
     to { opacity: 1; transform: translateY(0); }
   }
 
+  /* === ИНТРО === */
   .intro-tag {
+    font-family: 'Manrope', sans-serif;
     font-size: 10px;
-    letter-spacing: 3px;
+    letter-spacing: 3.5px;
     text-transform: uppercase;
-    color: var(--gold);
-    margin-bottom: 28px;
-    font-weight: 500;
+    color: var(--accent);
+    margin-bottom: 32px;
+    font-weight: 600;
   }
   .intro-title {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 38px;
+    font-family: 'Fraunces', serif;
+    font-size: 42px;
     font-weight: 400;
-    line-height: 1.1;
-    margin-bottom: 22px;
+    line-height: 1.05;
+    margin-bottom: 24px;
     letter-spacing: -0.5px;
+    color: var(--ink);
+    font-variation-settings: "opsz" 144;
   }
-  .intro-title em { font-style: italic; color: var(--gold); font-weight: 400; }
-  .intro-desc {
-    font-size: 15px;
-    line-height: 1.65;
-    color: var(--text-mute);
-    margin-bottom: 36px;
+  .intro-title em {
+    font-style: italic;
+    color: var(--accent);
     font-weight: 400;
   }
-  .intro-desc strong { color: var(--text); font-weight: 500; }
+  .intro-desc {
+    font-size: 15.5px;
+    line-height: 1.65;
+    color: var(--ink-soft);
+    margin-bottom: 32px;
+    font-weight: 400;
+  }
+  .intro-desc strong { color: var(--ink); font-weight: 600; }
 
   .intro-bullets {
     list-style: none;
@@ -122,452 +139,567 @@
   .intro-bullets li {
     font-size: 14px;
     line-height: 1.55;
-    color: var(--text-mute);
-    padding: 10px 0 10px 22px;
-    border-top: 1px solid var(--border);
+    color: var(--ink-soft);
+    padding: 12px 0 12px 24px;
+    border-top: 1px solid var(--line);
     position: relative;
   }
-  .intro-bullets li:last-child { border-bottom: 1px solid var(--border); }
+  .intro-bullets li:last-child { border-bottom: 1px solid var(--line); }
   .intro-bullets li::before {
     content: '';
     position: absolute;
-    left: 0; top: 19px;
-    width: 8px; height: 1px;
-    background: var(--gold);
+    left: 0; top: 21px;
+    width: 10px; height: 1px;
+    background: var(--accent);
   }
 
+  /* === КНОПКИ === */
   .btn-primary {
     display: block;
     width: 100%;
-    background: var(--gold);
-    color: #0E0B0C;
+    background: var(--ink);
+    color: var(--bg);
     border: none;
-    padding: 18px 24px;
-    font-family: inherit;
+    padding: 19px 24px;
+    font-family: 'Manrope', sans-serif;
     font-size: 13px;
     letter-spacing: 2.5px;
     text-transform: uppercase;
-    font-weight: 700;
+    font-weight: 600;
     cursor: pointer;
-    transition: all 0.2s;
-    border-radius: 0;
-    -webkit-appearance: none;
-    text-decoration: none;
     text-align: center;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    border-radius: 2px;
   }
-  .btn-primary:active { transform: scale(0.98); background: #B89055; }
-  .btn-primary.ghost {
-    background: transparent;
-    color: var(--gold);
-    border: 1px solid var(--gold);
-  }
-  .btn-primary.ghost:active { background: var(--gold-soft); }
+  .btn-primary:hover { background: var(--accent); }
+  .btn-primary:active { transform: scale(0.98); }
+  .btn-primary.accent { background: var(--accent); color: var(--bg); }
+  .btn-primary.accent:hover { background: #8B3F3F; }
 
+  /* === ВОПРОС === */
   .q-num {
-    font-size: 10px;
-    letter-spacing: 3px;
+    font-family: 'Manrope', sans-serif;
+    font-size: 11px;
+    letter-spacing: 2.5px;
     text-transform: uppercase;
-    color: var(--text-faint);
-    margin-bottom: 18px;
+    color: var(--ink-mute);
     font-weight: 500;
+    margin-bottom: 14px;
   }
   .q-text {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 24px;
+    font-family: 'Fraunces', serif;
+    font-size: 26px;
     font-weight: 400;
-    line-height: 1.32;
-    margin-bottom: 28px;
+    line-height: 1.25;
+    color: var(--ink);
+    margin-bottom: 32px;
+    font-variation-settings: "opsz" 72;
     letter-spacing: -0.2px;
   }
-  .q-text em { font-style: italic; color: var(--gold); }
+  .q-text em { font-style: italic; color: var(--accent); }
 
-  .options { display: flex; flex-direction: column; gap: 10px; }
+  .options {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 28px;
+  }
   .option {
-    border: 1px solid var(--border);
-    background: rgba(255,255,255,0.015);
-    padding: 16px 18px;
+    background: var(--bg-card);
+    border: 1px solid var(--line);
+    padding: 18px 20px;
     cursor: pointer;
-    transition: all 0.18s ease;
+    transition: all 0.2s ease;
+    border-radius: 4px;
     display: flex;
     align-items: flex-start;
     gap: 14px;
-    min-height: 56px;
-    user-select: none;
   }
-  .option:active {
-    border-color: var(--gold);
-    background: var(--gold-soft);
+  .option:hover {
+    border-color: var(--accent-line);
+    background: var(--bg-cream);
+    transform: translateX(2px);
   }
-  .option.selected {
-    border-color: var(--gold);
-    background: var(--gold-soft);
-  }
+  .option:active { transform: scale(0.99); }
   .option-letter {
-    font-size: 11px;
-    letter-spacing: 1.5px;
-    color: var(--gold);
-    font-weight: 700;
-    padding-top: 2px;
-    min-width: 14px;
+    font-family: 'Fraunces', serif;
+    font-size: 18px;
+    font-weight: 500;
+    color: var(--accent);
+    line-height: 1;
+    margin-top: 2px;
     flex-shrink: 0;
+    font-style: italic;
   }
   .option-text {
-    font-size: 16px;
+    font-size: 15px;
     line-height: 1.45;
-    color: rgba(242,237,226,0.88);
+    color: var(--ink);
     font-weight: 400;
   }
 
   .q-back {
-    margin-top: 24px;
-    text-align: center;
-    font-size: 13px;
-    color: var(--text-faint);
+    font-size: 12px;
+    color: var(--ink-mute);
     cursor: pointer;
-    padding: 12px;
-    user-select: none;
-  }
-  .q-back:active { color: var(--text-mute); }
-  .q-back.hidden { visibility: hidden; }
-
-  .analyzing {
     text-align: center;
-    padding: 80px 0;
+    margin-top: 12px;
+    letter-spacing: 0.3px;
+  }
+  .q-back:hover { color: var(--accent); }
+  .q-back.hidden { display: none; }
+
+  /* === АНАЛИЗ === */
+  .analyzing {
     flex: 1;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 40px 0;
   }
   .pulse {
-    width: 12px;
-    height: 12px;
-    background: var(--gold);
+    width: 16px; height: 16px;
     border-radius: 50%;
+    background: var(--accent);
     margin-bottom: 28px;
-    animation: pulse 1.2s ease-in-out infinite;
+    animation: pulse 1.4s ease-in-out infinite;
   }
   @keyframes pulse {
-    0%, 100% { opacity: 0.3; transform: scale(0.85); }
-    50% { opacity: 1; transform: scale(1.15); }
+    0%, 100% { opacity: 0.3; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.3); }
   }
   .analyzing-text {
-    font-family: 'Cormorant Garamond', serif;
+    font-family: 'Fraunces', serif;
     font-size: 22px;
-    font-weight: 400;
-    color: var(--text);
+    color: var(--ink);
+    margin-bottom: 8px;
     font-style: italic;
+    font-weight: 400;
   }
   .analyzing-sub {
-    margin-top: 12px;
-    font-size: 12px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--text-faint);
+    font-size: 13px;
+    color: var(--ink-mute);
+    letter-spacing: 0.3px;
   }
 
+  /* === РЕЗУЛЬТАТ === */
   .result-tag {
-    display: inline-block;
-    border: 1px solid var(--gold);
-    color: var(--gold);
     font-size: 10px;
-    letter-spacing: 3px;
+    letter-spacing: 3.5px;
     text-transform: uppercase;
-    padding: 6px 12px;
-    margin-bottom: 22px;
+    color: var(--accent);
+    margin-bottom: 16px;
     font-weight: 600;
   }
   .result-type {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 36px;
+    font-family: 'Fraunces', serif;
+    font-size: 38px;
     font-weight: 400;
-    line-height: 1.12;
-    margin-bottom: 20px;
+    line-height: 1.05;
+    color: var(--ink);
+    margin-bottom: 24px;
     letter-spacing: -0.5px;
+    font-variation-settings: "opsz" 144;
   }
-  .result-type em { font-style: italic; color: var(--gold); }
-
+  .result-type em {
+    font-style: italic;
+    color: var(--accent);
+    font-weight: 400;
+  }
   .divider {
     width: 32px;
     height: 1px;
-    background: var(--gold);
-    margin: 0 0 26px;
+    background: var(--accent);
+    margin-bottom: 28px;
   }
 
-  .result-section { margin-bottom: 28px; }
-  .result-section h3 {
-    font-size: 11px;
-    letter-spacing: 2.5px;
-    text-transform: uppercase;
-    color: var(--gold);
-    margin-bottom: 14px;
-    font-weight: 600;
+  .result-mirror {
+    font-family: 'Fraunces', serif;
+    font-size: 19px;
+    line-height: 1.5;
+    color: var(--ink);
+    margin-bottom: 28px;
+    font-weight: 400;
+    font-variation-settings: "opsz" 72;
   }
-  .result-section p {
-    font-size: 15.5px;
-    line-height: 1.7;
-    color: rgba(242,237,226,0.85);
-    margin-bottom: 14px;
+  .result-mirror strong {
+    font-weight: 500;
+    color: var(--accent);
+  }
+
+  .blind-spot {
+    background: var(--bg-card);
+    border-left: 2px solid var(--accent);
+    padding: 18px 20px;
+    margin-bottom: 28px;
+    border-radius: 0 4px 4px 0;
+  }
+  .blind-spot-label {
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 600;
+    margin-bottom: 8px;
+  }
+  .blind-spot-text {
+    font-size: 14.5px;
+    line-height: 1.55;
+    color: var(--ink);
     font-weight: 400;
   }
-  .result-section p:last-child { margin-bottom: 0; }
-  .result-section p strong { color: var(--text); font-weight: 600; }
-  .result-section p em { font-style: italic; color: var(--gold); }
 
-  .result-quote {
-    border-left: 2px solid var(--wine);
-    padding: 4px 0 4px 18px;
-    margin: 22px 0;
-    font-family: 'Cormorant Garamond', serif;
+  /* Блок-наблюдение когда сработал детектор */
+  .detector-block {
+    background: var(--danger-soft);
+    border: 1px solid rgba(140,58,46,0.18);
+    padding: 20px 22px;
+    margin-bottom: 28px;
+    border-radius: 4px;
+    position: relative;
+  }
+  .detector-block::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 4px; height: 100%;
+    background: var(--danger);
+  }
+  .detector-label {
+    font-family: 'Manrope', sans-serif;
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--danger);
+    font-weight: 700;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .detector-label::before {
+    content: '';
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--danger);
+    animation: blink 2s infinite;
+  }
+  @keyframes blink {
+    0%, 50%, 100% { opacity: 1; }
+    25%, 75% { opacity: 0.3; }
+  }
+  .detector-title {
+    font-family: 'Fraunces', serif;
+    font-size: 19px;
+    line-height: 1.3;
+    color: var(--ink);
+    margin-bottom: 10px;
+    font-weight: 500;
     font-style: italic;
-    font-size: 17px;
-    line-height: 1.5;
-    color: var(--text);
+  }
+  .detector-text {
+    font-size: 14.5px;
+    line-height: 1.55;
+    color: var(--ink-soft);
   }
 
+  .danger-section {
+    margin-bottom: 32px;
+  }
+  .danger-section h3 {
+    font-family: 'Fraunces', serif;
+    font-size: 18px;
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 14px;
+    letter-spacing: -0.2px;
+  }
+  .danger-section h3 em { font-style: italic; color: var(--accent); }
+
+  .danger-list {
+    list-style: none;
+    padding: 0;
+  }
+  .danger-list li {
+    font-size: 14.5px;
+    line-height: 1.55;
+    color: var(--ink-soft);
+    padding: 12px 0 12px 22px;
+    border-top: 1px solid var(--line-soft);
+    position: relative;
+  }
+  .danger-list li:last-child { border-bottom: 1px solid var(--line-soft); }
+  .danger-list li::before {
+    content: '—';
+    position: absolute;
+    left: 0; top: 12px;
+    color: var(--accent);
+    font-weight: 600;
+  }
+  .danger-list li strong { color: var(--ink); font-weight: 600; }
+
+  /* === БЛОК АЛЕКСА === */
   .alex-block {
-    margin-top: 36px;
+    background: var(--bg-card);
     padding: 28px 24px;
-    background: var(--bg-soft);
-    border: 1px solid var(--gold-line);
-    border-radius: 2px;
+    margin: 32px 0 24px;
+    border-radius: 6px;
+    border: 1px solid var(--line);
   }
   .alex-from {
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 14px;
     margin-bottom: 18px;
+    padding-bottom: 18px;
+    border-bottom: 1px solid var(--line-soft);
   }
   .alex-avatar {
-    width: 44px;
-    height: 44px;
+    width: 48px; height: 48px;
     border-radius: 50%;
-    background: linear-gradient(135deg, var(--gold), #8a6d3b);
+    background: linear-gradient(135deg, var(--accent), var(--warm));
+    color: var(--bg-cream);
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #0E0B0C;
-    font-weight: 700;
-    font-size: 16px;
-    letter-spacing: 1px;
+    font-family: 'Fraunces', serif;
+    font-size: 18px;
+    font-weight: 500;
+    font-style: italic;
     flex-shrink: 0;
   }
-  .alex-meta { line-height: 1.3; }
+  .alex-meta { flex: 1; }
   .alex-name {
-    font-size: 14px;
-    font-weight: 600;
-    color: var(--text);
+    font-family: 'Fraunces', serif;
+    font-size: 17px;
+    color: var(--ink);
+    font-weight: 500;
+    line-height: 1.2;
+    margin-bottom: 2px;
   }
   .alex-role {
-    font-size: 11px;
-    color: var(--text-faint);
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    margin-top: 3px;
+    font-size: 12px;
+    color: var(--ink-mute);
+    letter-spacing: 0.2px;
   }
   .alex-text {
-    font-size: 15px;
-    line-height: 1.65;
-    color: rgba(242,237,226,0.82);
+    font-size: 14.5px;
+    line-height: 1.6;
+    color: var(--ink);
     margin-bottom: 22px;
-    font-weight: 400;
   }
   .alex-text p { margin-bottom: 12px; }
   .alex-text p:last-child { margin-bottom: 0; }
-  .alex-text strong { color: var(--text); font-weight: 600; }
+  .alex-text strong { font-weight: 600; color: var(--accent); }
+
   .alex-sign {
-    font-family: 'Cormorant Garamond', serif;
+    font-family: 'Fraunces', serif;
     font-style: italic;
-    font-size: 16px;
-    color: var(--gold);
+    color: var(--ink-mute);
+    text-align: right;
     margin-top: 16px;
+    font-size: 14px;
   }
 
-  .restart {
-    display: block;
-    text-align: center;
-    margin-top: 22px;
-    font-size: 12px;
-    color: var(--text-faint);
-    cursor: pointer;
-    padding: 10px;
-    text-decoration: underline;
-    text-underline-offset: 3px;
-  }
-  .restart:active { color: var(--text-mute); }
-
+  /* === ОФФЕР === */
   .offer-tag {
+    font-size: 10px;
+    letter-spacing: 3.5px;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 16px;
+    font-weight: 600;
+  }
+  .offer-title {
+    font-family: 'Fraunces', serif;
+    font-size: 32px;
+    font-weight: 400;
+    line-height: 1.1;
+    margin-bottom: 18px;
+    letter-spacing: -0.4px;
+    color: var(--ink);
+    font-variation-settings: "opsz" 144;
+  }
+  .offer-title em {
+    font-style: italic;
+    color: var(--accent);
+    font-weight: 400;
+  }
+  .offer-lead {
+    font-size: 15.5px;
+    line-height: 1.6;
+    color: var(--ink-soft);
+    margin-bottom: 32px;
+  }
+
+  /* Бонус-блок */
+  .bonus-block {
+    background: var(--bg-cream);
+    border: 1px solid var(--accent-line);
+    padding: 22px 22px 24px;
+    margin-bottom: 28px;
+    border-radius: 6px;
+    position: relative;
+    overflow: hidden;
+  }
+  .bonus-block::before {
+    content: '';
+    position: absolute;
+    top: -30px; right: -30px;
+    width: 100px; height: 100px;
+    background: var(--accent-soft);
+    border-radius: 50%;
+    z-index: 0;
+  }
+  .bonus-tag {
     font-size: 10px;
     letter-spacing: 3px;
     text-transform: uppercase;
-    color: var(--gold);
-    margin-bottom: 16px;
-    font-weight: 500;
-  }
-  .offer-title {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 32px;
-    font-weight: 400;
-    line-height: 1.15;
-    margin-bottom: 12px;
-    letter-spacing: -0.4px;
-  }
-  .offer-title em { font-style: italic; color: var(--gold); }
-  .offer-lead {
-    font-size: 15px;
-    line-height: 1.65;
-    color: var(--text-mute);
-    margin-bottom: 32px;
-  }
-  .offer-lead strong { color: var(--text); font-weight: 500; }
-
-  .offer-block { margin-bottom: 32px; }
-  .offer-block-title {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    margin-bottom: 18px;
-  }
-  .offer-block-title h3 {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 22px;
-    font-weight: 400;
-    line-height: 1.2;
-    color: var(--text);
-  }
-  .offer-block-title h3 em { font-style: italic; color: var(--gold); }
-  .offer-icon {
-    font-family: 'Cormorant Garamond', serif;
-    font-style: italic;
-    width: 36px;
-    height: 36px;
-    border: 1px solid var(--gold);
-    color: var(--gold);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 16px;
-    font-weight: 500;
-    flex-shrink: 0;
-  }
-  .offer-icon.danger {
-    border-color: var(--wine);
-    color: var(--wine);
-  }
-
-  .results-list { list-style: none; padding: 0; }
-  .results-list li {
-    padding: 14px 0 14px 26px;
-    border-bottom: 1px solid var(--border);
-    position: relative;
-    font-size: 15px;
-    line-height: 1.55;
-    color: rgba(242,237,226,0.85);
-  }
-  .results-list li:last-child { border-bottom: none; }
-  .results-list li::before {
-    content: '✓';
-    position: absolute;
-    left: 0;
-    top: 14px;
-    color: var(--gold);
+    color: var(--accent);
     font-weight: 700;
-    font-size: 14px;
+    margin-bottom: 12px;
+    position: relative;
+    z-index: 1;
   }
-  .results-list li strong { color: var(--text); font-weight: 600; }
+  .bonus-title {
+    font-family: 'Fraunces', serif;
+    font-size: 21px;
+    font-weight: 500;
+    line-height: 1.25;
+    color: var(--ink);
+    margin-bottom: 10px;
+    letter-spacing: -0.2px;
+    position: relative;
+    z-index: 1;
+  }
+  .bonus-title em { font-style: italic; color: var(--accent); }
+  .bonus-desc {
+    font-size: 14px;
+    line-height: 1.55;
+    color: var(--ink-soft);
+    position: relative;
+    z-index: 1;
+  }
 
-  .danger-block {
-    background: var(--wine-soft);
-    border-left: 3px solid var(--wine);
-    padding: 20px 22px;
+  /* Таймер */
+  .timer-block {
+    background: var(--ink);
+    color: var(--bg-cream);
+    padding: 18px 20px;
+    margin-bottom: 24px;
+    border-radius: 4px;
+    text-align: center;
+  }
+  .timer-label {
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--bg-cream);
+    opacity: 0.65;
+    font-weight: 600;
     margin-bottom: 8px;
   }
-  .danger-list { list-style: none; padding: 0; }
-  .danger-list li {
-    padding: 10px 0 10px 20px;
-    position: relative;
+  .timer-display {
+    font-family: 'Fraunces', serif;
+    font-size: 28px;
+    font-weight: 400;
+    color: var(--bg);
+    letter-spacing: 1px;
+    font-feature-settings: "tnum";
+    font-variation-settings: "opsz" 72;
+  }
+  .timer-units {
+    font-size: 11px;
+    letter-spacing: 2px;
+    color: var(--bg-cream);
+    opacity: 0.55;
+    margin-top: 4px;
+    text-transform: uppercase;
+  }
+
+  /* CTA-блок */
+  .cta-block {
+    margin-bottom: 28px;
+  }
+  .cta-text {
     font-size: 14.5px;
-    line-height: 1.55;
-    color: rgba(242,237,226,0.82);
-    border-bottom: 1px solid rgba(184,84,80,0.12);
+    line-height: 1.6;
+    color: var(--ink-soft);
+    margin-bottom: 20px;
   }
-  .danger-list li:last-child { border-bottom: none; }
-  .danger-list li::before {
-    content: '—';
-    position: absolute;
-    left: 0;
-    top: 10px;
-    color: var(--wine);
-    font-weight: 700;
-  }
-  .danger-list li strong { color: var(--text); font-weight: 600; }
+  .cta-text p { margin-bottom: 10px; }
+  .cta-text p:last-child { margin-bottom: 0; }
+  .cta-text strong { color: var(--ink); font-weight: 600; }
 
-  .offer-cta-block {
-    margin-top: 36px;
-    padding: 28px 24px;
+  /* === SLIDER ДЛЯ S === */
+  .s-soft {
     background: var(--bg-card);
-    border: 1px solid var(--gold);
-  }
-  .offer-cta-text {
-    font-size: 15px;
-    line-height: 1.7;
-    color: rgba(242,237,226,0.85);
-    margin-bottom: 22px;
-  }
-  .offer-cta-text p { margin-bottom: 12px; }
-  .offer-cta-text p:last-child { margin-bottom: 0; }
-  .offer-cta-text strong { color: var(--text); font-weight: 600; }
-
-  .offer-back {
-    display: block;
+    border: 1px solid var(--line);
+    padding: 24px;
+    margin-bottom: 24px;
+    border-radius: 6px;
     text-align: center;
-    margin-top: 22px;
-    font-size: 12px;
-    color: var(--text-faint);
-    cursor: pointer;
-    padding: 10px;
-    text-decoration: underline;
-    text-underline-offset: 3px;
   }
-  .offer-back:active { color: var(--text-mute); }
+  .s-soft p {
+    font-size: 14.5px;
+    line-height: 1.6;
+    color: var(--ink-soft);
+    margin-bottom: 16px;
+  }
+
+  /* === ПРОЧЕЕ === */
+  .restart {
+    text-align: center;
+    margin-top: 24px;
+    font-size: 12px;
+    color: var(--ink-mute);
+    cursor: pointer;
+    letter-spacing: 0.3px;
+  }
+  .restart:hover { color: var(--accent); }
 
   .brand {
-    margin-top: 40px;
-    padding-top: 20px;
-    border-top: 1px solid var(--border);
     text-align: center;
-    font-size: 10px;
-    letter-spacing: 2.5px;
-    text-transform: uppercase;
-    color: var(--text-faint);
-    font-weight: 500;
+    margin-top: 32px;
+    padding-top: 24px;
+    border-top: 1px solid var(--line-soft);
+    font-family: 'Fraunces', serif;
+    font-size: 12px;
+    color: var(--ink-faint);
+    letter-spacing: 1.5px;
+    font-style: italic;
   }
 
+  /* === АДАПТИВ === */
   @media (max-width: 380px) {
-    .wrap { padding: 20px 18px 36px; }
-    .intro-title { font-size: 34px; }
-    .q-text { font-size: 22px; }
-    .option-text { font-size: 15.5px; }
+    .wrap { padding: 24px 18px 40px; }
+    .intro-title { font-size: 36px; }
+    .q-text { font-size: 23px; }
     .result-type { font-size: 32px; }
-    .offer-title { font-size: 28px; }
+    .offer-title { font-size: 27px; }
+    .timer-display { font-size: 24px; }
   }
-
-  @media (min-width: 561px) {
-    .intro-title { font-size: 46px; }
-    .q-text { font-size: 28px; }
-    .result-type { font-size: 42px; }
+  @media (min-width: 600px) {
+    .intro-title { font-size: 50px; }
+    .q-text { font-size: 30px; }
+    .result-type { font-size: 44px; }
     .offer-title { font-size: 38px; }
   }
-
-  input, textarea, select { font-size: 16px; }
 </style>
 </head>
 <body>
+
 <div class="wrap">
 
+  <!-- ПРОГРЕСС-БАР -->
   <div class="progress" id="progress">
-    <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
-    <div class="progress-text" id="progressText">1 / 30</div>
+    <div class="progress-bar">
+      <div class="progress-fill" id="progressFill"></div>
+    </div>
+    <div class="progress-text" id="progressText">1 / 13</div>
   </div>
 
   <!-- ИНТРО -->
@@ -575,19 +707,19 @@
     <div class="intro-tag">Алекс Коваль · диагностика</div>
     <h1 class="intro-title">Какой у вас<br><em>тип привязанности?</em></h1>
     <p class="intro-desc">
-      30 коротких вопросов о том, как вы ведёте себя в отношениях — не как должны по книжкам, а <strong>как есть на самом деле</strong>: когда он не отвечает, когда становится слишком близко, когда хочется проверить его сторис в третий раз за вечер.
+      13 вопросов о том, как вы ведёте себя в отношениях <strong>на самом деле</strong>: когда он не отвечает, когда становится слишком близко, когда хочется проверить его сторис в третий раз за вечер.
     </p>
     <ul class="intro-bullets">
-      <li>В основе — научный опросник ECR-R (Fraley, Brennan) — золотой стандарт диагностики привязанности у взрослых.</li>
-      <li>Никаких правильных ответов. Только честность с собой.</li>
-      <li>5–7 минут. Можно проходить с одной рукой в телефоне.</li>
+      <li>В основе — научный опросник ECR-R и моя клиническая практика</li>
+      <li>Никаких правильных ответов. Только честность с собой</li>
+      <li>3–4 минуты. Можно проходить с одной рукой в телефоне</li>
     </ul>
     <button class="btn-primary" onclick="startQuiz()">Начать</button>
   </div>
 
   <!-- ВОПРОС -->
   <div class="screen" id="screen-question">
-    <div class="q-num" id="qNum">Вопрос 1 из 30</div>
+    <div class="q-num" id="qNum">Вопрос 1 из 13</div>
     <div class="q-text" id="qText"></div>
     <div class="options" id="options"></div>
     <div class="q-back hidden" id="qBack" onclick="goBack()">← Изменить предыдущий ответ</div>
@@ -607,9 +739,27 @@
     <div class="result-tag">Ваш результат</div>
     <h2 class="result-type" id="resultType"></h2>
     <div class="divider"></div>
-    <div id="resultBody"></div>
 
-    <div class="alex-block">
+    <div class="result-mirror" id="resultMirror"></div>
+
+    <div class="blind-spot" id="blindSpot">
+      <div class="blind-spot-label">Слепое пятно</div>
+      <div class="blind-spot-text" id="blindSpotText"></div>
+    </div>
+
+    <!-- Блок-детектор появляется только если сработал -->
+    <div class="detector-block" id="detectorBlock" style="display:none;">
+      <div class="detector-label">Что я заметил как специалист</div>
+      <div class="detector-title" id="detectorTitle"></div>
+      <div class="detector-text" id="detectorText"></div>
+    </div>
+
+    <div class="danger-section">
+      <h3>Что будет если <em>ничего не менять</em></h3>
+      <ul class="danger-list" id="dangerList"></ul>
+    </div>
+
+    <div class="alex-block" id="alexBlock">
       <div class="alex-from">
         <div class="alex-avatar">АК</div>
         <div class="alex-meta">
@@ -618,7 +768,26 @@
         </div>
       </div>
       <div class="alex-text" id="alexText"></div>
-      <button class="btn-primary" onclick="goToOffer()">Узнать как с этим справиться</button>
+
+      <!-- Бонус-блок -->
+      <div class="bonus-block">
+        <div class="bonus-tag">Бонус к консультации</div>
+        <div class="bonus-title" id="bonusTitle"></div>
+        <div class="bonus-desc" id="bonusDesc"></div>
+      </div>
+
+      <!-- Таймер 48 часов -->
+      <div class="timer-block">
+        <div class="timer-label">До конца предложения</div>
+        <div class="timer-display" id="timerDisplay">48 : 00 : 00</div>
+        <div class="timer-units">часов · минут · секунд</div>
+      </div>
+
+      <div class="cta-block">
+        <div class="cta-text" id="ctaText"></div>
+      </div>
+
+      <a class="btn-primary accent" id="ctaBtn" href="https://t.me/m/hmFZwqauYjcy" target="_blank" rel="noopener">Записаться на консультацию</a>
       <div class="alex-sign">— Алекс</div>
     </div>
 
@@ -626,68 +795,23 @@
     <div class="brand">Alex Koval · Attachment Theory</div>
   </div>
 
-  <!-- ОФФЕР -->
-  <div class="screen" id="screen-offer">
-    <div class="offer-tag">Что делать дальше</div>
-    <h2 class="offer-title" id="offerTitle"></h2>
-    <p class="offer-lead" id="offerLead"></p>
-
-    <div class="offer-block">
-      <div class="offer-block-title">
-        <div class="offer-icon">I</div>
-        <h3>Что у вас <em>изменится</em> после работы со мной</h3>
-      </div>
-      <ul class="results-list" id="resultsList"></ul>
-    </div>
-
-    <div class="offer-block">
-      <div class="offer-block-title">
-        <div class="offer-icon danger">II</div>
-        <h3>Что будет если <em>ничего не менять</em></h3>
-      </div>
-      <div class="danger-block">
-        <ul class="danger-list" id="dangerList"></ul>
-      </div>
-    </div>
-
-    <div class="offer-cta-block">
-      <div class="offer-cta-text">
-        <p><strong>Никаких сложных программ и обязательств.</strong> Просто напишите мне в Телеграм — запишемся на консультацию.</p>
-        <p>Час разговора — и у вас будет ясность: что внутри происходит, в каком порядке с этим разбираться, и нужна ли вам моя работа вообще.</p>
-        <p>Без глубоких копаний на старте. Сначала просто посмотрим где вы сейчас и куда стоит двигаться.</p>
-        <p>Напишите слово <strong>«тест»</strong> — отвечу лично и предложу время.</p>
-      </div>
-      <a class="btn-primary" href="https://t.me/m/hmFZwqauYjcy" target="_blank" rel="noopener">Написать Алексу в Telegram</a>
-    </div>
-
-    <span class="offer-back" onclick="backToResult()">← Вернуться к результату</span>
-    <div class="brand">Alex Koval · Attachment Theory</div>
-  </div>
-
 </div>
 
 <script>
 // ============================================================
-// 30 ВОПРОСОВ — ECR-R (Fraley, Waller, Brennan, 2000)
-// 15 пунктов на тревожность + 15 на избегание
-// Обращение: на «вы»
+// ВОПРОСЫ — 13 шт.
+// 5 на тревожность (A) | 4 на избегание (V) | 4 детектора (D)
+// type "S" — надёжный (нейтральные ответы)
+// type "D" в детекторных вопросах = тревожный сигнал
 // ============================================================
 const questions = [
-  // — ШКАЛА ТРЕВОЖНОСТИ —
+  // === ШКАЛА ТРЕВОЖНОСТИ (5) ===
   {
     text: "Любимый не отвечает на сообщения 2–3 часа. Что обычно у вас в голове?",
     options: [
-      { l: "А", t: "Начинается тревога. Перебираю что я могла сделать не так.", type: "A" },
+      { l: "А", t: "Тревога. Перебираю что я могла сделать не так.", type: "A" },
       { l: "Б", t: "Занят. Ответит когда сможет.", type: "S" },
       { l: "В", t: "Не зацикливаюсь. У меня свои дела.", type: "V" }
-    ]
-  },
-  {
-    text: "Я часто переживаю что любимый не любит меня так сильно, как я люблю его.",
-    options: [
-      { l: "А", t: "Это про меня. Часто.", type: "A" },
-      { l: "Б", t: "Иногда мелькает, но в целом я уверена.", type: "S" },
-      { l: "В", t: "Не особо думаю об этом.", type: "V" }
     ]
   },
   {
@@ -699,91 +823,11 @@ const questions = [
     ]
   },
   {
-    text: "Если он давно не сказал «я тебя люблю»:",
-    options: [
-      { l: "А", t: "Внутри тревога. Может, остыл?", type: "A" },
-      { l: "Б", t: "Не считаю слова критичными. Действия важнее.", type: "S" },
-      { l: "В", t: "Я и не жду этих слов. Лишнее.", type: "V" }
-    ]
-  },
-  {
-    text: "Когда вы поссорились и он молчит несколько часов:",
-    options: [
-      { l: "А", t: "Не могу есть, спать, работать. Всё внутри на разрыв.", type: "A" },
-      { l: "Б", t: "Грустно. Но мы поговорим — разберёмся.", type: "S" },
-      { l: "В", t: "Ну ок. Так даже легче.", type: "V" }
-    ]
-  },
-  {
     text: "Я часто проверяю когда он был онлайн, читает ли мои сообщения, смотрит ли мои сторис.",
     options: [
       { l: "А", t: "Да. Каждый день. Иногда по нескольку раз.", type: "A" },
       { l: "Б", t: "Редко. Если только что-то реально насторожило.", type: "S" },
       { l: "В", t: "Не делаю этого. Зачем.", type: "V" }
-    ]
-  },
-  {
-    text: "Когда он уезжает в командировку или отдыхает с друзьями без вас:",
-    options: [
-      { l: "А", t: "Боюсь что встретит другую. Пишу часто.", type: "A" },
-      { l: "Б", t: "Скучаю, но живу свою жизнь.", type: "S" },
-      { l: "В", t: "Если честно — мне даже легче.", type: "V" }
-    ]
-  },
-  {
-    text: "Когда он критикует вас, даже мягко:",
-    options: [
-      { l: "А", t: "Чувствую себя ужасно. Долго прокручиваю в голове.", type: "A" },
-      { l: "Б", t: "Слышу. Если справедливо — приму. Если нет — скажу.", type: "S" },
-      { l: "В", t: "Закрываюсь. Не хочу обсуждать.", type: "V" }
-    ]
-  },
-  {
-    text: "Если в начале отношений он отвечает медленнее обычного:",
-    options: [
-      { l: "А", t: "Сразу думаю что меня уже не любят. В голове катастрофа.", type: "A" },
-      { l: "Б", t: "Замечаю, но не накручиваю.", type: "S" },
-      { l: "В", t: "Скорее облегчение. Меньше давления.", type: "V" }
-    ]
-  },
-  {
-    text: "Я хочу быть очень близкой с партнёром — настолько, что иногда это его отпугивает.",
-    options: [
-      { l: "А", t: "Узнаю себя. Слышала такое не раз.", type: "A" },
-      { l: "Б", t: "Иногда такое бывает, но я уже научилась.", type: "S" },
-      { l: "В", t: "У меня скорее наоборот — слишком много дистанции.", type: "V" }
-    ]
-  },
-  {
-    text: "Когда вы вместе и он смотрит в телефон или отвлекается:",
-    options: [
-      { l: "А", t: "Сразу думаю — что там? Кто? Я ему стала неинтересна?", type: "A" },
-      { l: "Б", t: "Пройдёт. Если регулярно — скажу.", type: "S" },
-      { l: "В", t: "Достаю свой. Каждый сам по себе.", type: "V" }
-    ]
-  },
-  {
-    text: "Если бы он сказал «нам надо поговорить»:",
-    options: [
-      { l: "А", t: "Сразу решила бы что меня бросают. Несколько часов в панике.", type: "A" },
-      { l: "Б", t: "Окей. Поговорим.", type: "S" },
-      { l: "В", t: "Внутри уже готовлюсь к худшему. Закрываюсь.", type: "V" }
-    ]
-  },
-  {
-    text: "Я постоянно сравниваю себя с другими женщинами вокруг него.",
-    options: [
-      { l: "А", t: "Да. Подружки, бывшие, коллеги — кто красивее, моложе, успешнее.", type: "A" },
-      { l: "Б", t: "Иногда мелькнёт, но не зацикливаюсь.", type: "S" },
-      { l: "В", t: "Не делаю этого. Я — это я.", type: "V" }
-    ]
-  },
-  {
-    text: "Когда мне нужна поддержка от партнёра:",
-    options: [
-      { l: "А", t: "Намекаю и жду чтобы догадался сам. Если нет — обижаюсь.", type: "A" },
-      { l: "Б", t: "Говорю напрямую: «мне сейчас нужно чтобы ты был рядом».", type: "S" },
-      { l: "В", t: "Справляюсь сама. Просить — не умею.", type: "V" }
     ]
   },
   {
@@ -794,78 +838,32 @@ const questions = [
       { l: "В", t: "Что я в этих отношениях потеряю себя.", type: "V" }
     ]
   },
-
-  // — ШКАЛА ИЗБЕГАНИЯ —
   {
-    text: "Делиться с партнёром глубокими чувствами и переживаниями для меня:",
+    text: "Когда мне нужна поддержка от партнёра:",
     options: [
-      { l: "А", t: "Естественно. Иногда даже слишком — он не успевает за мной.", type: "A" },
-      { l: "Б", t: "Нормально. Постепенно, с близкими — открываюсь.", type: "S" },
-      { l: "В", t: "Сложно. Не люблю выворачивать душу.", type: "V" }
+      { l: "А", t: "Намекаю и жду чтобы догадался сам. Если нет — обижаюсь.", type: "A" },
+      { l: "Б", t: "Говорю напрямую: «мне сейчас нужно чтобы ты был рядом».", type: "S" },
+      { l: "В", t: "Справляюсь сама. Просить — не умею.", type: "V" }
     ]
   },
+
+  // === ДЕТЕКТОР: РУМИНАЦИЯ / БЕССОННИЦА (1) ===
+  {
+    text: "Когда вы переживаете о близком человеке, ваш сон:",
+    options: [
+      { l: "А", t: "Часами не могу заснуть. В голове прокручиваются разговоры и сценарии.", type: "D" },
+      { l: "Б", t: "Засыпаю как обычно. Думаю об этом утром.", type: "S" },
+      { l: "В", t: "Засыпаю быстро, но просыпаюсь рано и больше не сплю.", type: "D" }
+    ]
+  },
+
+  // === ШКАЛА ИЗБЕГАНИЯ (4) ===
   {
     text: "Когда партнёр становится эмоционально слишком близок:",
     options: [
       { l: "А", t: "Кайф. Хочу так всегда.", type: "A" },
       { l: "Б", t: "Хорошо. Иногда нужна пауза, но в целом приятно.", type: "S" },
       { l: "В", t: "Чувствую как сжимается внутри. Хочется отойти.", type: "V" }
-    ]
-  },
-  {
-    text: "Полагаться на партнёра в эмоционально трудный момент мне:",
-    options: [
-      { l: "А", t: "Очень нужно. Без него вообще не справляюсь.", type: "A" },
-      { l: "Б", t: "Помогает. Я знаю что могу попросить.", type: "S" },
-      { l: "В", t: "Сложно. Я лучше сама.", type: "V" }
-    ]
-  },
-  {
-    text: "Когда партнёр хочет провести вместе всё свободное время:",
-    options: [
-      { l: "А", t: "Идеально. Чем больше — тем лучше.", type: "A" },
-      { l: "Б", t: "Хорошо. Скажу если устану и захочется одной побыть.", type: "S" },
-      { l: "В", t: "Давит. Соглашаюсь, а сама уже думаю как вырвать пару часов для себя.", type: "V" }
-    ]
-  },
-  {
-    text: "Свои тревоги, страхи, неудачи я партнёру:",
-    options: [
-      { l: "А", t: "Рассказываю всё. Часто. И жду чтобы он успокоил.", type: "A" },
-      { l: "Б", t: "Делюсь когда есть силы и доверие.", type: "S" },
-      { l: "В", t: "Скрываю. Это слабость.", type: "V" }
-    ]
-  },
-  {
-    text: "Когда я расстроена, я предпочитаю:",
-    options: [
-      { l: "А", t: "Чтобы партнёр был рядом. Немедленно.", type: "A" },
-      { l: "Б", t: "Иногда быть рядом, иногда побыть одной — по настроению.", type: "S" },
-      { l: "В", t: "Побыть одной. Я разберусь сама.", type: "V" }
-    ]
-  },
-  {
-    text: "Когда партнёр предлагает съехаться или жить вместе:",
-    options: [
-      { l: "А", t: "Радость. Наконец-то.", type: "A" },
-      { l: "Б", t: "Нормальный шаг если оба готовы.", type: "S" },
-      { l: "В", t: "Тревога. Не уверена что готова к такой близости.", type: "V" }
-    ]
-  },
-  {
-    text: "Длинные разговоры о чувствах и отношениях для меня:",
-    options: [
-      { l: "А", t: "Жизненно необходимы. Могу часами.", type: "A" },
-      { l: "Б", t: "Нормально. Не каждый день, но иногда полезно.", type: "S" },
-      { l: "В", t: "Утомляют. Не вижу в них смысла.", type: "V" }
-    ]
-  },
-  {
-    text: "Когда партнёр пытается узнать что у меня внутри:",
-    options: [
-      { l: "А", t: "С удовольствием рассказываю. Он мой самый близкий.", type: "A" },
-      { l: "Б", t: "Открываюсь. Если есть доверие.", type: "S" },
-      { l: "В", t: "Раздражает. Не люблю когда лезут в душу.", type: "V" }
     ]
   },
   {
@@ -877,21 +875,25 @@ const questions = [
     ]
   },
   {
-    text: "Мужчина, который «то горячо, то холодно» — пишет 100 раз, потом пропадает:",
+    text: "Длинные разговоры о чувствах и отношениях для меня:",
     options: [
-      { l: "А", t: "Не могу думать ни о чём другом. Хочу понять что не так.", type: "A" },
-      { l: "Б", t: "Один раз — и пока. У меня нет сил на эти качели.", type: "S" },
-      { l: "В", t: "Удобно. Никто не давит.", type: "V" }
+      { l: "А", t: "Жизненно необходимы. Могу часами.", type: "A" },
+      { l: "Б", t: "Нормально. Не каждый день, но иногда полезно.", type: "S" },
+      { l: "В", t: "Утомляют. Не вижу в них смысла.", type: "V" }
     ]
   },
+
+  // === ДЕТЕКТОР: СОМАТИКА (1) ===
   {
-    text: "Когда я открываюсь и говорю партнёру свои уязвимые вещи, потом часто:",
+    text: "Когда тревожно — тело реагирует:",
     options: [
-      { l: "А", t: "Жалею. Боюсь что использует против меня.", type: "A" },
-      { l: "Б", t: "Чувствую близость. Это нас сближает.", type: "S" },
-      { l: "В", t: "Сразу закрываюсь обратно. И долго не открываюсь.", type: "V" }
+      { l: "А", t: "Да. Комок в горле, сжатие груди, иногда подташнивает.", type: "D" },
+      { l: "Б", t: "Нет. Эмоции отдельно, тело отдельно.", type: "S" },
+      { l: "В", t: "Да. Желудок, головная боль, мышцы каменеют.", type: "D" }
     ]
   },
+
+  // === ШКАЛА ИЗБЕГАНИЯ (продолжение) ===
   {
     text: "После расставания (даже год назад):",
     options: [
@@ -900,227 +902,125 @@ const questions = [
       { l: "В", t: "Уже не помню. Ушла в работу сразу. Не оглядываюсь.", type: "V" }
     ]
   },
+
+  // === ДЕТЕКТОР: ИНТРУЗИВНЫЕ МЫСЛИ (1) ===
   {
-    text: "Если бы вы описали любовь одним образом:",
+    text: "Бывает что одна и та же мысль крутится в голове, и вы не можете её остановить?",
     options: [
-      { l: "А", t: "Огонь. Красиво. Но обжигает каждую секунду.", type: "A" },
-      { l: "Б", t: "Дом. Туда хочется возвращаться.", type: "S" },
-      { l: "В", t: "Открытое окно. Воздух. И стекло чтобы захлопнуть.", type: "V" }
+      { l: "А", t: "Постоянно. Иногда сутками. Знаю что бесполезно — не помогает.", type: "D" },
+      { l: "Б", t: "Иногда. Но обычно отвлекаюсь и проходит.", type: "S" },
+      { l: "В", t: "Редко. Я умею «выключать» мысли.", type: "V" }
     ]
   },
+
+  // === ДЕТЕКТОР: РАСФОКУС / ГИПЕРКОНТРОЛЬ (1) ===
   {
-    text: "В детстве ваша мама чаще была:",
+    text: "Когда внутри что-то тревожит — что чаще всего происходит с вашей способностью работать и сосредотачиваться?",
     options: [
-      { l: "А", t: "Непредсказуемая. Сегодня обнимает, завтра холодная. Не знала чего ждать.", type: "A" },
-      { l: "Б", t: "Стабильная. Не идеальная — но рядом и понятная.", type: "S" },
-      { l: "В", t: "Холодная или отсутствующая. Я рано поняла что справлюсь сама.", type: "V" }
+      { l: "А", t: "Падает в ноль. Сижу за делом и не могу собраться, перечитываю одно и то же.", type: "D" },
+      { l: "Б", t: "Снижается, но я заставляю себя. Справляюсь.", type: "S" },
+      { l: "В", t: "Наоборот ухожу с головой в работу — там не больно.", type: "D" }
     ]
   }
 ];
 
 // ============================================================
-// РЕЗУЛЬТАТЫ
+// РЕЗУЛЬТАТЫ — короткие, маркетинговые, без полной картины
 // ============================================================
 const results = {
   A: {
     type: 'Тревожный тип<br><em>привязанности</em>',
-    body: `
-      <div class="result-section">
-        <p>Вы не «слишком чувствительная». Вы не «просто любите сильно». У вас <strong>сломан внутренний детектор безопасности</strong> — и он давно работает не на вас, а против.</p>
-        <p>Когда он отвечает «ок» — ваша нервная система слышит угрозу. Когда он молчит 4 часа — вы уже похоронили отношения трижды. Когда вернулся и всё нормально — вы не выдыхаете, а ждёте следующего раза.</p>
-      </div>
-
-      <div class="result-quote">«Меня не травмирует работа. Меня травмирует отношение.» — фраза, которая повторяется почти у каждой клиентки с тревожной привязанностью.</div>
-
-      <div class="result-section">
-        <h3>Что вы уже знаете о себе</h3>
-        <p>Вы прочитали книги. Вы знаете термины. Вы можете объяснить подруге что такое тревожная привязанность лучше любого психолога. Но в момент когда он не отвечает — мозг отключает ту часть, которая знает теорию. И вы снова делаете то же самое.</p>
-      </div>
-
-      <div class="result-section">
-        <h3>Что вам никто не сказал</h3>
-        <p>Вы <strong>выбираете именно тех</strong>, с кем эта тревога активируется. Стабильный мужчина не цепляет — потому что от него внутри тихо. А вы не привыкли к тишине внутри. Тишина для вас = «что-то скоро случится».</p>
-        <p>Это не «вы сломаны». Это нервная система, которую учили лет 20–30 определённым реакциям. Сама она не разберётся — она и так делает максимум того, что умеет.</p>
-      </div>
-
-      <div class="result-section">
-        <h3>Что показывают исследования</h3>
-        <p>Тревожная привязанность <em>не растворяется со временем</em>. Без целенаправленной работы она закрепляется с каждым новым циклом отношений. Около 20% людей живут с этим типом всю жизнь — потому что считают что «такой характер».</p>
-      </div>
-    `,
-    alex: `
-      <p>Если вы узнали себя в описании выше — это не случайно. И это не приговор.</p>
-      <p>Я работаю именно с тревожной привязанностью у женщин. Видел сотни таких циклов. И знаю где они рвутся.</p>
-      <p>Дальше я расскажу <strong>что у вас изменится после работы со мной</strong> и что будет если ничего не менять. И как со мной можно начать работать.</p>
-    `,
-    offerTitle: 'Один шаг — и <em>появится ясность</em>.',
-    offerLead: 'Раз вы дочитали до этого места — значит откликнулось. Дальше я честно расскажу что меняется в работе со мной и что будет если оставить всё как есть.',
-    resultsList: [
-      '<strong>Перестанете паниковать</strong> когда он не отвечает 2–3 часа. Это не про «контроль эмоций» — это про переучивание нервной системы.',
-      '<strong>Перестанете проверять</strong> его сторис, лайки, последний онлайн. Не потому что заставляете себя — а потому что внутренне больше не нужно.',
-      '<strong>Сможете быть рядом со стабильным мужчиной</strong> — и не скучать. Это самая сложная часть, и без работы она не приходит.',
-      '<strong>Перестанете терять себя</strong> в каждых новых отношениях. Будете знать где вы — а где он. Это не «холод», это границы.',
-      '<strong>Сможете говорить о потребностях прямо</strong>, а не намёками с обидой когда он не угадал.',
-      '<strong>Уйдёт фоновая тревога</strong> что «он скоро уйдёт». Это самая изматывающая штука — и она реально уходит.',
-      '<strong>Перестанете влюбляться в нестабильных.</strong> Тех самых «то горячо, то холодно». Сейчас это автоматическая реакция, потом — выбор.',
-      '<strong>Появится способность спокойно остаться одной</strong> — без внутренней катастрофы и поиска кого-то нового через неделю.'
+    mirror: `<p>Когда он отвечает «ок» — ваша нервная система слышит угрозу. Когда он молчит 4 часа — вы уже похоронили отношения трижды. Когда вернулся и всё нормально — вы не выдыхаете, а <strong>ждёте следующего раза.</strong></p>`,
+    blindSpot: 'Большинство женщин с тревожным типом думают что «слишком сильно любят». На самом деле работает другой механизм — и пока вы его не видите, он выбирает вам мужчин за вас.',
+    danger: [
+      '<strong>Цикл повторится.</strong> С новыми мужчинами, в новых декорациях. С тем же финалом.',
+      '<strong>Тревога не уходит сама.</strong> Без работы она крепнет с возрастом — особенно после 35.',
+      '<strong>Стабильные мужчины не цепляют.</strong> И это самое опасное — потому что вы будете уходить от тех, кто бы вас закрыл.'
     ],
-    dangerList: [
-      '<strong>Ещё 5–10 лет того же сценария.</strong> С разными мужчинами, в разных декорациях, с одинаковым финалом.',
-      '<strong>Усиление паттерна с возрастом.</strong> После 35–40 тревожная привязанность не смягчается, а наоборот — становится жёстче, потому что прибавляется страх «не успеть».',
-      '<strong>Передача детям.</strong> Тревожная привязанность передаётся. Ребёнок учится у вас реакциям — и потом мы видим её во взрослом возрасте у дочерей и сыновей.',
-      '<strong>Депрессия и тревожные расстройства.</strong> Исследования показывают: высокая тревожность привязанности достоверно коррелирует с депрессией, паническими атаками, ОКР, расстройствами сна.',
-      '<strong>Расстройства пищевого поведения.</strong> Эмоциональное переедание или ограничения — частые спутники тревожного типа. Тело берёт на себя то, что не выдерживает психика.',
-      '<strong>Ущерб здоровью.</strong> Хронический кортизол убивает иммунитет, разрушает сердце и сосуды, провоцирует гипертонию, мигрени, проблемы с ЖКТ. Тревога — не «в голове», она в теле.',
-      '<strong>Карьера и деньги стоят на месте.</strong> Огромная часть вашей энергии уходит на отношения, тревогу, восстановление. На реализацию и заработок остаются крохи.',
-      '<strong>Подруги начнут отдаляться.</strong> Сначала слушают и поддерживают. Потом устают от одних и тех же историй с одинаковым финалом. Незаметно круг общения сужается.',
-      '<strong>Отношения с надёжными мужчинами не получатся.</strong> Они будут попадаться — но вы будете от них уходить, не понимая почему «не цепляет». А «цепляющие» будут продолжать ломать вас.',
-      '<strong>Постепенная потеря веры в любовь.</strong> После 5-го, 7-го, 10-го цикла внутри звучит: «у меня не получится никогда, со мной что-то не так». Это самое тяжёлое — потому что неправда, но звучит как факт.',
-      '<strong>Ощущение что жизнь проходит мимо.</strong> Годы уходят, отношения меняются, а внутри — всё то же. Как фильм, который смотрите по кругу, и не можете выйти из зала.',
-      '<strong>Невозможность по-настоящему успокоиться.</strong> Даже когда внешне всё хорошо — внутри вы всё равно ждёте подвоха. Эта фоновая готовность к удару не выключается.'
-    ]
+    alex: `
+      <p>Если вы узнали себя — это не случайно.</p>
+      <p>Я работаю именно с тревожной привязанностью у женщин. На консультации мы за час разберём что у вас активирует тревогу, какой <strong>конкретно</strong> ваш цикл, и с чего начинать.</p>
+    `,
+    bonusTitle: 'PDF-инструкция <em>«Стоп-тревога»</em>',
+    bonusDesc: '7 техник чтобы остановить накручивание за 60 секунд когда он не отвечает. Получаете в подарок к консультации — без доплат.',
+    cta: `<p><strong>Только в течение 48 часов после теста.</strong> Дальше PDF не входит в стандартную консультацию.</p><p>Запишитесь на консультацию — я отвечу лично и предложу время.</p>`
   },
 
   AV: {
     type: 'Тревожно-избегающий<br><em>тип</em>',
-    body: `
-      <div class="result-section">
-        <p>Вы хотите близости — и не выносите её. <strong>Это не противоречие. Это ваша система.</strong></p>
-        <p>Когда его нет — задыхаетесь. Когда рядом — задыхаетесь тоже, но по-другому. Тянетесь. Потом отдёргиваетесь. Зовёте. Потом исчезаете сами.</p>
-      </div>
-
-      <div class="result-quote">«Меня кидает из крайности в крайность. Я вижу свой потенциал, но меня постоянно бросает.» — почти дословная цитата клиентки.</div>
-
-      <div class="result-section">
-        <h3>Что внутри</h3>
-        <p>В вашей истории кто-то одновременно был вам <strong>нужен и опасен</strong>. Чаще всего — мама или папа. Или оба. Вы усвоили: близкий человек = и любовь, и угроза. Одновременно. Поэтому ваше тело учится двум несовместимым реакциям сразу — тянуться и убегать.</p>
-      </div>
-
-      <div class="result-section">
-        <h3>Что происходит в отношениях</h3>
-        <p>Мужчины рядом с вами не понимают что происходит. Они либо уходят сами через полгода. Либо вы их выматываете до состояния когда они уходят. Либо остаются — но тогда вы их не уважаете, потому что «настоящий мужчина не выдержал бы это».</p>
-      </div>
-
-      <div class="result-section">
-        <h3>Это самый редкий и самый сложный тип</h3>
-        <p>Не потому что вы «сломаны». А потому что у вас внутри две программы воюют друг с другом 24/7. И <em>сама из этого никто не выходит</em>. Это та самая ситуация где «полюби себя» не работает в принципе — потому что вы не знаете какую часть себя любить, тянущуюся или убегающую.</p>
-      </div>
-    `,
-    alex: `
-      <p>Это самый сложный тип из всех. Я не буду вам врать.</p>
-      <p>Но это и самый интересный для работы — потому что когда внутренний конфликт распутывается, женщины которые годами не могли построить отношения, выходят на стабильность буквально за месяцы.</p>
-      <p>Дальше я подробно расскажу <strong>что меняется в работе со мной</strong> и что будет если ничего не менять.</p>
-    `,
-    offerTitle: 'Распутать <em>двойную программу</em> можно.',
-    offerLead: 'С вашим типом «полюби себя» и общие книги по психологии не работают — именно потому что у вас внутри два конфликтующих сценария. Здесь нужна точечная работа. Расскажу что в ней меняется.',
-    resultsList: [
-      '<strong>Поймёте свою «двойную программу»</strong> — когда работает тяга, когда срабатывает убегание. Это даст контроль которого у вас сейчас нет.',
-      '<strong>Перестанете сами уходить</strong> от мужчин которые вам подходят. Это самый частый запрос — и да, это решается.',
-      '<strong>Сможете оставаться</strong> когда становится близко. Не задыхаясь. Не сбегая в работу или в новые отношения.',
-      '<strong>Появится умение быть в близости и оставаться собой одновременно.</strong> Сейчас вам кажется что это невозможно. Это возможно.',
-      '<strong>Перестанете «качать» партнёра</strong> — то приближать, то отталкивать. Это разрушает мужчин и истощает вас.',
-      '<strong>Уйдёт ощущение «я непонятна сама себе».</strong> Когда видишь свои реакции — они перестают казаться хаотичными.',
-      '<strong>Появится возможность долгих отношений.</strong> Не на полгода. Не на год. По-настоящему долгих.'
+    mirror: `<p>Вы хотите близости — и не выносите её. Это <strong>не противоречие.</strong> Это ваша система.</p><p>Когда его нет — задыхаетесь. Когда рядом — задыхаетесь тоже, но по-другому.</p>`,
+    blindSpot: 'Это самый редкий тип — около 7% людей. И самый сложный, потому что внутри вас две программы воюют 24/7. «Полюби себя» здесь не работает в принципе — вы не знаете какую часть себя любить.',
+    danger: [
+      '<strong>Мужчины уходят сами.</strong> Через полгода-год. Не понимая что происходит.',
+      '<strong>Сама из этого не выходит никто.</strong> Это та тема где общие книги по психологии не работают.',
+      '<strong>С возрастом конфликт усиливается.</strong> И вы остаётесь либо одна, либо рядом с тем кого не уважаете.'
     ],
-    dangerList: [
-      '<strong>Цикл будет повторяться.</strong> Через год, два, пять — то же самое. С новыми лицами, но с тем же финалом.',
-      '<strong>С возрастом становится жёстче.</strong> После 35 тревожно-избегающие чаще остаются одни — не потому что не нашли, а потому что не смогли удержать.',
-      '<strong>Растёт изоляция.</strong> Дружбы тоже страдают по той же схеме — то слиться, то исчезнуть. Близких людей вокруг становится меньше.',
-      '<strong>Депрессивные эпизоды.</strong> Это самый высокорискованный тип в плане сопутствующих диагнозов — депрессия, ПТСР, расстройства настроения.',
-      '<strong>Зависимости.</strong> Алкоголь, переедание, шопинг, токсичные отношения «для острых ощущений» — всё это способы заглушить внутренний конфликт.',
-      '<strong>Соматика.</strong> Постоянное напряжение между «хочу — не могу» уходит в тело: гипертония, проблемы с ЖКТ, аутоиммунные заболевания.',
-      '<strong>Карьера в режиме «спринты-выгорание».</strong> Вы можете сделать огромный рывок, но не можете удержаться на стабильности — там скучно.',
-      '<strong>Нерешённый вопрос с детьми.</strong> Многие тревожно-избегающие откладывают материнство годами, потому что внутри нет ясности и стабильности.',
-      '<strong>Самое тяжёлое:</strong> вы уже знаете что что-то не так. И живёте с этим знанием. Это съедает изнутри сильнее всего остального.',
-      '<strong>Постепенное эмоциональное онемение.</strong> Через годы постоянных качелей нервная система начинает «выключать» чувства вообще. Не потому что вы стали холодной — потому что устала.',
-      '<strong>Утрата ощущения «я понимаю себя».</strong> Это самая дорогая потеря — когда ты сама себе чужая.'
-    ]
+    alex: `
+      <p>Это самый сложный тип. Не буду вам врать.</p>
+      <p>Но это и самый интересный для работы — когда внутренний конфликт распутывается, женщины которые годами не могли построить отношения, выходят на стабильность <strong>буквально за месяцы.</strong></p>
+    `,
+    bonusTitle: 'PDF-инструкция <em>«Двойная программа»</em>',
+    bonusDesc: 'Как разорвать цикл «тяну — убегаю» и понять какая часть вас сейчас за рулём. Получаете в подарок к консультации.',
+    cta: `<p><strong>Только в течение 48 часов после теста.</strong> Дальше PDF не входит в стандартную консультацию.</p><p>Запишитесь — на консультации я расскажу с чего начинать именно в вашем случае.</p>`
   },
 
   V: {
     type: 'Избегающий тип<br><em>привязанности</em>',
-    body: `
-      <div class="result-section">
-        <p>Вы справляетесь сами. Всегда справлялись. <strong>Это ваш главный ресурс — и ваша главная клетка.</strong></p>
-        <p>Когда кто-то подходит слишком близко — что-то внутри сворачивается. Не потому что вы холодная. Вы можете быть очень тёплой. Но близость стоит вам энергии, которой у вас нет в запасе.</p>
-      </div>
-
-      <div class="result-section">
-        <h3>Что вы замечаете о себе</h3>
-        <p>Хороший мужчина у вас вызывает скуку. Тот, кто явно не подходит — не вызывает ничего, и это удобно. Удобно — потому что не больно. И вы сами не понимаете почему так.</p>
-      </div>
-
-      <div class="result-section">
-        <h3>Откуда это</h3>
-        <p>Вы не «сильная и независимая». Вы человек, который очень рано усвоил: <em>рассчитывать можно только на себя</em>. Это работало в детстве — это была разумная адаптация. Сейчас оно вас изолирует.</p>
-        <p>Большинство женщин с вашим типом приходят за помощью после 35, когда понимают: я могу сама всё. А близкого человека рядом так и не появилось. И это не «я не встретила своего» — это система внутри не пускает.</p>
-      </div>
-    `,
-    alex: `
-      <p>Вам скорее всего не хочется это читать. Я понимаю — избегающие реже всего обращаются за помощью, потому что сама идея зависеть от чьей-то экспертизы вызывает дискомфорт.</p>
-      <p>Но если вы дочитали — значит что-то откликнулось.</p>
-      <p>Дальше — <strong>что меняется в работе со мной</strong> и что будет если оставить всё как есть.</p>
-    `,
-    offerTitle: 'Можно <em>научиться близости</em> заново.',
-    offerLead: 'С избегающим типом важно одно: я не «лезу в душу» и не пытаюсь вас разговорить силой. Работа выглядит иначе. Расскажу что в ней меняется.',
-    resultsList: [
-      '<strong>Появится ощущение тёплых чувств</strong> рядом со стабильными людьми — не скуки, а интереса. Это переучивание, оно реально.',
-      '<strong>Перестанете автоматически закрываться</strong> когда становится близко. Будет выбор — открыться или нет — а не автоматическая реакция.',
-      '<strong>Сможете говорить о своих чувствах</strong> не теряя достоинства. Это не про «изливать душу» — это про язык близости.',
-      '<strong>Уйдёт фоновое одиночество.</strong> Многие избегающие живут с ним так долго, что уже не замечают. Когда уходит — заметно.',
-      '<strong>Сможете зависеть от кого-то</strong> и не чувствовать себя слабой. Это самый сложный навык — и самый ценный.',
-      '<strong>Появятся настоящие отношения</strong> — не «удобные», а живые. Многие женщины впервые узнают какие они вообще.',
-      '<strong>Уйдёт хроническая усталость от собственной независимости.</strong> Тащить всё одной — это дорого. Можно научиться отпускать вес.'
+    mirror: `<p>Вы справляетесь сами. Всегда справлялись. Это ваш главный <strong>ресурс — и ваша главная клетка.</strong></p><p>Хороший мужчина у вас вызывает скуку. Тот, кто явно не подходит — не вызывает ничего. И это удобно.</p>`,
+    blindSpot: 'Большинство избегающих не считают что у них «проблемы с привязанностью». Они считают что они «сильные и независимые». Это и есть ловушка — потому что система внутри не пускает близкого человека ровно туда, куда вам нужно.',
+    danger: [
+      '<strong>«Я не нашла своего».</strong> Эта фраза в 40+ — почти всегда про избегающий тип.',
+      '<strong>Чем дольше — тем сложнее выходить.</strong> В 25 лет это работа на 6 месяцев. В 45 — на пару лет.',
+      '<strong>Эмоциональное онемение.</strong> Постепенно теряется способность чувствовать ярко — и хорошее, и плохое.'
     ],
-    dangerList: [
-      '<strong>Рост изоляции.</strong> С возрастом избегающие отдаляются от всех — партнёров, друзей, родственников. Незаметно для себя.',
-      '<strong>«Я не нашла своего».</strong> Эта фраза в 40+ — почти всегда про избегающий тип. Не про мужчин — про себя.',
-      '<strong>Эмоциональное онемение.</strong> Постепенно теряется вообще способность чувствовать ярко — и хорошее, и плохое.',
-      '<strong>Соматика.</strong> Подавленные эмоции уходят в тело — гипертония, проблемы с ЖКТ, хроническая усталость, аутоиммунные.',
-      '<strong>Чем дольше живёте с этим — тем сложнее выходить.</strong> В 25 лет это работа на 6 месяцев. В 45 — на пару лет.',
-      '<strong>Финансовая независимость превращается в ловушку.</strong> Когда «я и сама всё могу» становится не выбором, а единственным сценарием — это уже не сила, а изоляция.',
-      '<strong>Потеря смысла.</strong> Многие избегающие добиваются всего — карьеры, статуса, денег — и в какой-то момент чувствуют пустоту, которую нечем заполнить.',
-      '<strong>Нерешённый вопрос материнства.</strong> Откладывается годами «потому что не нашла надёжного» — а на самом деле не нашлось внутреннего разрешения зависеть.',
-      '<strong>Поздние депрессии.</strong> После 40 у избегающих чаще, чем у других, развиваются депрессивные состояния — особенно после ухода родителей.',
-      '<strong>Старость в одиночестве.</strong> Это пугающая перспектива, но статистически — самая частая для непроработанного избегающего типа.',
-      '<strong>Сожаление как фоновое чувство.</strong> Не острое — но постоянное. «А что если бы я тогда позволила…»'
-    ]
+    alex: `
+      <p>Вам скорее всего не хочется это читать. Я понимаю — избегающие реже всего обращаются за помощью.</p>
+      <p>Но если вы дочитали — значит что-то откликнулось. На консультации я не «лезу в душу». Работа с избегающим типом устроена <strong>иначе</strong> — и я расскажу как именно.</p>
+    `,
+    bonusTitle: 'PDF-инструкция <em>«Близость без потери себя»</em>',
+    bonusDesc: '5 шагов чтобы открыться без ощущения что вы себя теряете. Написано специально для избегающего типа. Получаете к консультации.',
+    cta: `<p><strong>Только в течение 48 часов после теста.</strong> Дальше PDF не входит в стандартную консультацию.</p><p>Запишитесь на консультацию — я отвечу лично и предложу время.</p>`
   },
 
   S: {
     type: 'Надёжный тип<br><em>привязанности</em>',
-    body: `
-      <div class="result-section">
-        <p>Вам либо повезло — либо вы много над собой работали. Третьего обычно нет.</p>
-        <p>Вы умеете быть рядом и умеете отпускать. Конфликты вас не разрушают. Расставание — больно, но не смертельно. Вы не превращаете любого мужчину в проект «спасти, переделать, удержать».</p>
-      </div>
-
-      <div class="result-section">
-        <h3>Это редкость</h3>
-        <p>Около 50% людей имеют надёжный тип. Большинство женщин вокруг вас живут либо в постоянной тревоге, либо за стеной. Вы — где-то посередине. И это не комплимент из вежливости.</p>
-        <p>Если у вас сейчас всё нормально с отношениями — здорово. Если нет — то проблема скорее не в вашем типе, а в том что рядом не тот человек. Это другая работа.</p>
-      </div>
-    `,
-    alex: `
-      <p>Вам скорее всего не нужна помощь по теме привязанности. Возможно — по другому: выбор партнёра, личные границы, самореализация.</p>
-      <p>Если хочется — посмотрите что меняется в работе со мной. Возможно, узнаете себя в одной из задач с которыми я работаю.</p>
-    `,
-    offerTitle: 'У вас <em>хорошая база</em>. Можно идти дальше.',
-    offerLead: 'У вас надёжный тип — поэтому глубокая работа по привязанности вам скорее не нужна. Но я часто работаю с темами вокруг: партнёрский выбор, границы, самореализация.',
-    resultsList: [
-      '<strong>Научитесь выбирать партнёров под свой реальный запрос</strong>, а не «как получится».',
-      '<strong>Сможете говорить «нет» без чувства вины</strong> — даже близким людям.',
-      '<strong>Появится язык для своих границ</strong> — мягкий, но ясный.',
-      '<strong>Перестанете брать на себя чужие задачи</strong> в отношениях, на работе, в семье.',
-      '<strong>Появится ясность по своему пути и приоритетам.</strong>'
+    mirror: `<p>Вам либо повезло — либо вы много над собой работали. Третьего обычно не бывает.</p><p>Вы умеете быть рядом и умеете отпускать. Не превращаете любого мужчину в проект «спасти, переделать, удержать».</p>`,
+    blindSpot: 'Около 50% людей имеют надёжный тип. Если у вас сейчас сложности в отношениях — проблема скорее не в вашем типе, а в том кто рядом. Это другая работа — и она тоже решаема.',
+    danger: [
+      '<strong>«Спасатель» — частая ловушка надёжных.</strong> Можно годами тащить тревожного или избегающего партнёра, теряя силы.',
+      '<strong>Ваши потребности уходят на второй план.</strong> Когда вы стабильны — другие неосознанно начинают опираться на вас чаще, чем нужно.',
+      '<strong>Партнёр с непроработанной привязанностью</strong> постепенно «вытягивает» вас в свой паттерн.'
     ],
-    dangerList: [
-      '<strong>Хороший тип — не гарантия хороших отношений.</strong> Если рядом партнёр с непроработанной привязанностью — он постепенно «вытягивает» вас в свой паттерн.',
-      '<strong>«Спасатель» — частая ловушка надёжных.</strong> Вы можете годами тащить на себе тревожного или избегающего партнёра, теряя силы.',
-      '<strong>Без проработки границ</strong> надёжность переходит в «удобство для всех». Это путь к выгоранию.',
-      '<strong>Ваши потребности уходят на второй план.</strong> Когда вы стабильны — другие неосознанно начинают на вас опираться чаще, чем нужно.',
-      '<strong>Можно потерять себя в роли «той, у которой всё нормально».</strong> Когда от вас все ждут что вы справитесь — становится сложно говорить что вам тяжело.'
-    ]
+    alex: `
+      <p>Глубокая работа по привязанности вам скорее не нужна. Но я часто работаю с темами вокруг: партнёрский выбор, границы, самореализация.</p>
+      <p>Если откликается — приходите на разбор. За час станет понятно есть ли у нас что обсудить или у вас и так всё в порядке.</p>
+    `,
+    bonusTitle: 'PDF-разбор <em>«Партнёрский выбор»</em>',
+    bonusDesc: 'Как надёжному типу не залипнуть в роли «спасателя» и выбирать себе равного. Получаете к консультации.',
+    cta: `<p><strong>Только в течение 48 часов после теста.</strong> Дальше PDF не входит в стандартную консультацию.</p><p>Если хотите — запишитесь, час разговора покажет нужна ли работа.</p>`
+  }
+};
+
+// ============================================================
+// ДЕТЕКТОР — что добавляем если ≥2 тревожных ответа
+// ============================================================
+const detectorBlocks = {
+  // Для тревожного типа — детектор подсвечивает ОКР-подобную руминацию
+  A: {
+    title: 'У вас в ответах есть ещё кое-что — это меняет картину.',
+    text: 'Помимо тревожного типа, по вашим ответам видны признаки <strong>устойчивой руминации и соматизации</strong> — мысли крутятся, тело реагирует, сон ломается. Это значит что одной работы с привязанностью будет мало. На консультации я отдельно расскажу что с этим делать — и почему стандартные техники здесь не помогают.'
+  },
+  AV: {
+    title: 'У вас активирован «двойной фронт» — и это важно.',
+    text: 'К конфликту тяги-убегания добавляется устойчивый <strong>тревожный фон в теле и голове</strong>. Это типичная картина — и именно её сложнее всего распутать без специалиста. Расскажу на консультации с чего начинать.'
+  },
+  V: {
+    title: 'У вас не «холод» — у вас замороженная тревога.',
+    text: 'По ответам видно что под избеганием прячется <strong>сильный тревожный заряд</strong> — он уходит в тело и в работу. Это другая картина чем «классический избегающий», и работать с ней нужно иначе. Расскажу как.'
+  },
+  S: {
+    title: 'У вас надёжный тип — но есть тревожный фон.',
+    text: 'Привязанность здоровая. Но в ответах виден <strong>тревожный фон, бессонница или соматика.</strong> Это не про отношения — это про общую регуляцию. На консультации можем разобрать откуда это и что с этим делать.'
   }
 };
 
@@ -1128,9 +1028,10 @@ const results = {
 // ЛОГИКА
 // ============================================================
 let current = 0;
-let scores = { A: 0, S: 0, V: 0 };
+let scores = { A: 0, S: 0, V: 0, D: 0 };
 let answers = [];
 let currentResultKey = null;
+let timerInterval = null;
 
 function startQuiz() {
   document.getElementById('progress').classList.add('show');
@@ -1143,15 +1044,17 @@ function showQuestion(idx) {
   document.getElementById('qNum').textContent = `Вопрос ${idx + 1} из ${questions.length}`;
   document.getElementById('qText').textContent = q.text;
 
-  const opts = document.getElementById('options');
-  opts.innerHTML = '';
-  q.options.forEach((opt, i) => {
+  const optsEl = document.getElementById('options');
+  optsEl.innerHTML = '';
+  q.options.forEach(opt => {
     const div = document.createElement('div');
-    const isSelected = answers[idx] && answers[idx].idx === i;
-    div.className = 'option' + (isSelected ? ' selected' : '');
-    div.innerHTML = `<span class="option-letter">${opt.l}</span><span class="option-text">${opt.t}</span>`;
-    div.onclick = () => selectOption(idx, i, opt.type);
-    opts.appendChild(div);
+    div.className = 'option';
+    div.innerHTML = `
+      <div class="option-letter">${opt.l}</div>
+      <div class="option-text">${opt.t}</div>
+    `;
+    div.onclick = () => selectAnswer(opt.type);
+    optsEl.appendChild(div);
   });
 
   const back = document.getElementById('qBack');
@@ -1162,30 +1065,33 @@ function showQuestion(idx) {
   window.scrollTo(0, 0);
 }
 
-function selectOption(qIdx, optIdx, type) {
-  if (answers[qIdx]) {
-    scores[answers[qIdx].type]--;
+function selectAnswer(type) {
+  // фиксируем ответ
+  if (current < answers.length) {
+    // если возвращались назад — корректируем счёт
+    const prev = answers[current];
+    if (scores[prev] > 0) scores[prev]--;
+    answers[current] = type;
+  } else {
+    answers.push(type);
   }
-  answers[qIdx] = { idx: optIdx, type: type };
   scores[type]++;
 
-  document.querySelectorAll('.option').forEach((el, i) => {
-    el.classList.toggle('selected', i === optIdx);
-  });
-
-  setTimeout(() => {
-    if (qIdx < questions.length - 1) {
-      current = qIdx + 1;
-      showQuestion(current);
-    } else {
-      runAnalysis();
-    }
-  }, 400);
+  if (current < questions.length - 1) {
+    current++;
+    showQuestion(current);
+  } else {
+    runAnalysis();
+  }
 }
 
 function goBack() {
   if (current > 0) {
     current--;
+    // откатываем последний ответ из счёта
+    const last = answers[current];
+    if (scores[last] > 0) scores[last]--;
+    answers.pop();
     showQuestion(current);
   }
 }
@@ -1203,76 +1109,115 @@ function runAnalysis() {
   const phrases = [
     'Анализирую ваши ответы…',
     'Сверяю по шкале ECR-R…',
-    'Собираю карту'
+    'Собираю карту вашего паттерна'
   ];
   let p = 0;
   const el = document.getElementById('analyzingText');
   const interval = setInterval(() => {
     p++;
     if (p < phrases.length) el.textContent = phrases[p];
-  }, 700);
+  }, 800);
 
   setTimeout(() => {
     clearInterval(interval);
     showResult();
-  }, 2100);
+  }, 2400);
+}
+
+function getResultKey() {
+  // суммируем только A/S/V (без детекторов)
+  const total = scores.A + scores.S + scores.V;
+  if (total === 0) return 'S';
+  const aPct = scores.A / total;
+  const vPct = scores.V / total;
+  const sPct = scores.S / total;
+
+  // тревожно-избегающий
+  if (aPct >= 0.30 && vPct >= 0.30 && Math.abs(scores.A - scores.V) <= 2) {
+    return 'AV';
+  }
+  if (sPct >= aPct && sPct >= vPct) return 'S';
+  if (scores.A >= scores.V) return 'A';
+  return 'V';
 }
 
 function showResult() {
   const key = getResultKey();
   currentResultKey = key;
   const r = results[key];
+
   document.getElementById('resultType').innerHTML = r.type;
-  document.getElementById('resultBody').innerHTML = r.body;
-  document.getElementById('alexText').innerHTML = r.alex;
-  showScreen('screen-result');
-  window.scrollTo(0, 0);
-}
+  document.getElementById('resultMirror').innerHTML = r.mirror;
+  document.getElementById('blindSpotText').textContent = r.blindSpot;
 
-function goToOffer() {
-  if (!currentResultKey) return;
-  const r = results[currentResultKey];
+  // Детекторный блок появляется если ≥2 тревожных детектор-ответа
+  if (scores.D >= 2) {
+    const det = detectorBlocks[key];
+    document.getElementById('detectorTitle').textContent = det.title;
+    document.getElementById('detectorText').innerHTML = det.text;
+    document.getElementById('detectorBlock').style.display = 'block';
+  } else {
+    document.getElementById('detectorBlock').style.display = 'none';
+  }
 
-  document.getElementById('offerTitle').innerHTML = r.offerTitle;
-  document.getElementById('offerLead').textContent = r.offerLead;
-
-  const rl = document.getElementById('resultsList');
-  rl.innerHTML = '';
-  r.resultsList.forEach(item => {
-    const li = document.createElement('li');
-    li.innerHTML = item;
-    rl.appendChild(li);
-  });
-
+  // Опасности
   const dl = document.getElementById('dangerList');
   dl.innerHTML = '';
-  r.dangerList.forEach(item => {
+  r.danger.forEach(item => {
     const li = document.createElement('li');
     li.innerHTML = item;
     dl.appendChild(li);
   });
 
-  showScreen('screen-offer');
-  window.scrollTo(0, 0);
-}
+  // Алекс + бонус + CTA
+  document.getElementById('alexText').innerHTML = r.alex;
+  document.getElementById('bonusTitle').innerHTML = r.bonusTitle;
+  document.getElementById('bonusDesc').textContent = r.bonusDesc;
+  document.getElementById('ctaText').innerHTML = r.cta;
 
-function backToResult() {
+  // Запускаем таймер 48 часов
+  startTimer();
+
   showScreen('screen-result');
   window.scrollTo(0, 0);
 }
 
-function getResultKey() {
-  const total = scores.A + scores.S + scores.V;
-  const aPct = scores.A / total;
-  const vPct = scores.V / total;
-  const sPct = scores.S / total;
+// ============================================================
+// 48-ЧАСОВОЙ ТАЙМЕР (привязан к первому прохождению)
+// ============================================================
+function startTimer() {
+  const STORAGE_KEY = 'attachment_test_deadline';
+  let deadline = localStorage.getItem(STORAGE_KEY);
 
-  if (aPct >= 0.3 && vPct >= 0.3 && Math.abs(scores.A - scores.V) <= 4) {
-    return 'AV';
+  if (!deadline) {
+    deadline = Date.now() + 48 * 60 * 60 * 1000;
+    localStorage.setItem(STORAGE_KEY, deadline);
+  } else {
+    deadline = parseInt(deadline);
   }
-  if (sPct >= aPct && sPct >= vPct) return 'S';
-  if (scores.A >= scores.V) return 'A';
-  return 'V';
+
+  const tick = () => {
+    const now = Date.now();
+    const diff = deadline - now;
+
+    if (diff <= 0) {
+      document.getElementById('timerDisplay').textContent = '00 : 00 : 00';
+      if (timerInterval) clearInterval(timerInterval);
+      return;
+    }
+
+    const hours = Math.floor(diff / (1000 * 60 * 60));
+    const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+    const pad = n => n.toString().padStart(2, '0');
+    document.getElementById('timerDisplay').textContent =
+      `${pad(hours)} : ${pad(minutes)} : ${pad(seconds)}`;
+  };
+
+  tick();
+  if (timerInterval) clearInterval(timerInterval);
+  timerInterval = setInterval(tick, 1000);
 }
 
 function showScreen(id) {
@@ -1282,9 +1227,10 @@ function showScreen(id) {
 
 function restart() {
   current = 0;
-  scores = { A: 0, S: 0, V: 0 };
+  scores = { A: 0, S: 0, V: 0, D: 0 };
   answers = [];
   currentResultKey = null;
+  if (timerInterval) clearInterval(timerInterval);
   document.getElementById('progress').classList.remove('show');
   showScreen('screen-intro');
   window.scrollTo(0, 0);
