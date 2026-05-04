@@ -23,6 +23,7 @@
     --line: rgba(30,26,20,0.10);
     --line-soft: rgba(30,26,20,0.06);
     --accent: #6B2D2D;
+    --accent-deep: #4A1E1E;
     --accent-soft: rgba(107,45,45,0.08);
     --accent-line: rgba(107,45,45,0.20);
     --warm: #8B6B3D;
@@ -31,7 +32,11 @@
     --danger-soft: rgba(140,58,46,0.06);
   }
 
-  html, body { background: var(--bg); }
+  html, body {
+    background: var(--bg);
+    overscroll-behavior-y: contain;
+    overscroll-behavior-x: none;
+  }
 
   body {
     color: var(--ink);
@@ -51,8 +56,8 @@
   .wrap {
     max-width: 600px;
     margin: 0 auto;
-    padding: 28px 22px 48px;
-    padding-bottom: calc(48px + env(safe-area-inset-bottom));
+    padding: 24px 22px 40px;
+    padding-bottom: calc(40px + env(safe-area-inset-bottom));
     min-height: 100vh;
     min-height: 100svh;
     display: flex;
@@ -64,7 +69,7 @@
     display: none;
     align-items: center;
     gap: 14px;
-    margin-bottom: 36px;
+    margin-bottom: 28px;
   }
   .progress.show { display: flex; }
   .progress-bar {
@@ -91,20 +96,19 @@
 
   /* === ЭКРАНЫ === */
   .screen { display: none; flex: 1; flex-direction: column; }
-  .screen.active { display: flex; animation: fade .4s ease; }
+  .screen.active { display: flex; animation: fade .45s ease; }
   @keyframes fade {
-    from { opacity: 0; transform: translateY(8px); }
+    from { opacity: 0; transform: translateY(10px); }
     to { opacity: 1; transform: translateY(0); }
   }
 
   /* === ИНТРО === */
   .intro-tag {
-    font-family: 'Manrope', sans-serif;
     font-size: 10px;
     letter-spacing: 3.5px;
     text-transform: uppercase;
     color: var(--accent);
-    margin-bottom: 32px;
+    margin-bottom: 28px;
     font-weight: 600;
   }
   .intro-title {
@@ -112,7 +116,7 @@
     font-size: 42px;
     font-weight: 400;
     line-height: 1.05;
-    margin-bottom: 24px;
+    margin-bottom: 22px;
     letter-spacing: -0.5px;
     color: var(--ink);
     font-variation-settings: "opsz" 144;
@@ -123,24 +127,24 @@
     font-weight: 400;
   }
   .intro-desc {
-    font-size: 15.5px;
-    line-height: 1.65;
+    font-size: 15px;
+    line-height: 1.6;
     color: var(--ink-soft);
-    margin-bottom: 32px;
+    margin-bottom: 28px;
     font-weight: 400;
   }
   .intro-desc strong { color: var(--ink); font-weight: 600; }
 
   .intro-bullets {
     list-style: none;
-    margin-bottom: 36px;
+    margin-bottom: 32px;
     padding: 0;
   }
   .intro-bullets li {
-    font-size: 14px;
-    line-height: 1.55;
+    font-size: 13.5px;
+    line-height: 1.5;
     color: var(--ink-soft);
-    padding: 12px 0 12px 24px;
+    padding: 11px 0 11px 24px;
     border-top: 1px solid var(--line);
     position: relative;
   }
@@ -148,7 +152,7 @@
   .intro-bullets li::before {
     content: '';
     position: absolute;
-    left: 0; top: 21px;
+    left: 0; top: 19px;
     width: 10px; height: 1px;
     background: var(--accent);
   }
@@ -160,10 +164,10 @@
     background: var(--ink);
     color: var(--bg);
     border: none;
-    padding: 19px 24px;
+    padding: 15px 22px;
     font-family: 'Manrope', sans-serif;
-    font-size: 13px;
-    letter-spacing: 2.5px;
+    font-size: 12.5px;
+    letter-spacing: 2.2px;
     text-transform: uppercase;
     font-weight: 600;
     cursor: pointer;
@@ -175,25 +179,24 @@
   .btn-primary:hover { background: var(--accent); }
   .btn-primary:active { transform: scale(0.98); }
   .btn-primary.accent { background: var(--accent); color: var(--bg); }
-  .btn-primary.accent:hover { background: #8B3F3F; }
+  .btn-primary.accent:hover { background: var(--accent-deep); }
 
   /* === ВОПРОС === */
   .q-num {
-    font-family: 'Manrope', sans-serif;
     font-size: 11px;
     letter-spacing: 2.5px;
     text-transform: uppercase;
     color: var(--ink-mute);
     font-weight: 500;
-    margin-bottom: 14px;
+    margin-bottom: 12px;
   }
   .q-text {
     font-family: 'Fraunces', serif;
-    font-size: 26px;
+    font-size: 24px;
     font-weight: 400;
     line-height: 1.25;
     color: var(--ink);
-    margin-bottom: 32px;
+    margin-bottom: 26px;
     font-variation-settings: "opsz" 72;
     letter-spacing: -0.2px;
   }
@@ -202,13 +205,13 @@
   .options {
     display: flex;
     flex-direction: column;
-    gap: 12px;
-    margin-bottom: 28px;
+    gap: 11px;
+    margin-bottom: 24px;
   }
   .option {
     background: var(--bg-card);
     border: 1px solid var(--line);
-    padding: 18px 20px;
+    padding: 16px 18px;
     cursor: pointer;
     transition: all 0.2s ease;
     border-radius: 4px;
@@ -224,7 +227,7 @@
   .option:active { transform: scale(0.99); }
   .option-letter {
     font-family: 'Fraunces', serif;
-    font-size: 18px;
+    font-size: 17px;
     font-weight: 500;
     color: var(--accent);
     line-height: 1;
@@ -233,22 +236,36 @@
     font-style: italic;
   }
   .option-text {
-    font-size: 15px;
+    font-size: 14.5px;
     line-height: 1.45;
     color: var(--ink);
     font-weight: 400;
   }
 
-  .q-back {
-    font-size: 12px;
-    color: var(--ink-mute);
-    cursor: pointer;
+  /* кнопка "получить консультацию" на странице вопроса */
+  .q-consult {
+    display: inline-block;
+    align-self: center;
+    margin: 8px auto 0;
+    padding: 11px 22px;
+    font-family: 'Manrope', sans-serif;
+    font-size: 10.5px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    font-weight: 600;
+    color: var(--accent);
+    background: transparent;
+    border: 1px solid var(--accent-line);
+    border-radius: 2px;
+    text-decoration: none;
     text-align: center;
-    margin-top: 12px;
-    letter-spacing: 0.3px;
+    transition: all 0.2s;
   }
-  .q-back:hover { color: var(--accent); }
-  .q-back.hidden { display: none; }
+  .q-consult:hover {
+    background: var(--accent);
+    color: var(--bg-cream);
+    border-color: var(--accent);
+  }
 
   /* === АНАЛИЗ === */
   .analyzing {
@@ -285,79 +302,109 @@
     letter-spacing: 0.3px;
   }
 
-  /* === РЕЗУЛЬТАТ === */
+  /* === РЕЗУЛЬТАТ — ЭКРАН 1 === */
   .result-tag {
-    font-size: 10px;
-    letter-spacing: 3.5px;
+    font-family: 'Manrope', sans-serif;
+    font-size: 13px;
+    letter-spacing: 4px;
     text-transform: uppercase;
     color: var(--accent);
-    margin-bottom: 16px;
-    font-weight: 600;
+    margin-bottom: 18px;
+    font-weight: 700;
   }
   .result-type {
     font-family: 'Fraunces', serif;
-    font-size: 38px;
-    font-weight: 400;
-    line-height: 1.05;
+    font-size: 26px;
+    font-weight: 500;
+    line-height: 1.1;
     color: var(--ink);
-    margin-bottom: 24px;
-    letter-spacing: -0.5px;
-    font-variation-settings: "opsz" 144;
+    margin-bottom: 22px;
+    letter-spacing: -0.3px;
+    font-variation-settings: "opsz" 96;
   }
   .result-type em {
     font-style: italic;
     color: var(--accent);
     font-weight: 400;
   }
-  .divider {
-    width: 32px;
-    height: 1px;
-    background: var(--accent);
-    margin-bottom: 28px;
-  }
 
-  .result-mirror {
-    font-family: 'Fraunces', serif;
-    font-size: 19px;
-    line-height: 1.5;
-    color: var(--ink);
-    margin-bottom: 28px;
-    font-weight: 400;
-    font-variation-settings: "opsz" 72;
+  .meaning-block {
+    margin-bottom: 16px;
   }
-  .result-mirror strong {
-    font-weight: 500;
-    color: var(--accent);
-  }
-
-  .blind-spot {
-    background: var(--bg-card);
-    border-left: 2px solid var(--accent);
-    padding: 18px 20px;
-    margin-bottom: 28px;
-    border-radius: 0 4px 4px 0;
-  }
-  .blind-spot-label {
+  .meaning-label {
     font-size: 10px;
-    letter-spacing: 3px;
+    letter-spacing: 2.5px;
     text-transform: uppercase;
-    color: var(--accent);
+    color: var(--ink-mute);
     font-weight: 600;
-    margin-bottom: 8px;
+    margin-bottom: 6px;
   }
-  .blind-spot-text {
+  .meaning-text {
     font-size: 14.5px;
     line-height: 1.55;
     color: var(--ink);
     font-weight: 400;
   }
+  .meaning-text strong { font-weight: 600; color: var(--accent); }
 
-  /* Блок-наблюдение когда сработал детектор */
+  .blind-spot-card {
+    background: var(--bg-card);
+    border-left: 2px solid var(--accent);
+    padding: 14px 16px;
+    margin: 18px 0 24px;
+    border-radius: 0 4px 4px 0;
+  }
+  .blind-spot-label {
+    font-size: 10px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 700;
+    margin-bottom: 6px;
+  }
+  .blind-spot-text {
+    font-size: 14px;
+    line-height: 1.5;
+    color: var(--ink);
+  }
+  .blind-spot-text strong { color: var(--accent); font-weight: 600; }
+
+  /* === РЕЗУЛЬТАТ — ЭКРАН 2 (БОЛЬ) === */
+  .pain-tag {
+    font-size: 10px;
+    letter-spacing: 3.5px;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 14px;
+    font-weight: 600;
+  }
+  .pain-title {
+    font-family: 'Fraunces', serif;
+    font-size: 28px;
+    font-weight: 500;
+    line-height: 1.15;
+    color: var(--ink);
+    margin-bottom: 20px;
+    letter-spacing: -0.3px;
+    font-variation-settings: "opsz" 96;
+  }
+  .pain-title em { font-style: italic; color: var(--accent); }
+  .pain-text {
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--ink-soft);
+    margin-bottom: 22px;
+  }
+  .pain-text p { margin-bottom: 12px; }
+  .pain-text p:last-child { margin-bottom: 0; }
+  .pain-text strong { color: var(--ink); font-weight: 600; }
+
+  /* Детектор-блок */
   .detector-block {
     background: var(--danger-soft);
     border: 1px solid rgba(140,58,46,0.18);
-    padding: 20px 22px;
-    margin-bottom: 28px;
+    padding: 14px 16px 14px 20px;
+    margin-bottom: 22px;
     border-radius: 4px;
     position: relative;
   }
@@ -365,20 +412,19 @@
     content: '';
     position: absolute;
     top: 0; left: 0;
-    width: 4px; height: 100%;
+    width: 3px; height: 100%;
     background: var(--danger);
   }
   .detector-label {
-    font-family: 'Manrope', sans-serif;
-    font-size: 10px;
+    font-size: 9.5px;
     letter-spacing: 3px;
     text-transform: uppercase;
     color: var(--danger);
     font-weight: 700;
-    margin-bottom: 10px;
+    margin-bottom: 8px;
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 8px;
   }
   .detector-label::before {
     content: '';
@@ -391,270 +437,279 @@
     0%, 50%, 100% { opacity: 1; }
     25%, 75% { opacity: 0.3; }
   }
-  .detector-title {
-    font-family: 'Fraunces', serif;
-    font-size: 19px;
-    line-height: 1.3;
-    color: var(--ink);
-    margin-bottom: 10px;
-    font-weight: 500;
-    font-style: italic;
-  }
   .detector-text {
-    font-size: 14.5px;
-    line-height: 1.55;
-    color: var(--ink-soft);
-  }
-
-  .danger-section {
-    margin-bottom: 32px;
-  }
-  .danger-section h3 {
-    font-family: 'Fraunces', serif;
-    font-size: 18px;
-    font-weight: 500;
+    font-size: 13.5px;
+    line-height: 1.5;
     color: var(--ink);
-    margin-bottom: 14px;
-    letter-spacing: -0.2px;
   }
-  .danger-section h3 em { font-style: italic; color: var(--accent); }
+  .detector-text strong { color: var(--danger); font-weight: 600; }
 
-  .danger-list {
+  /* === РЕЗУЛЬТАТ — ЭКРАН 3 (ШАГИ) === */
+  .steps-tag {
+    font-size: 10px;
+    letter-spacing: 3.5px;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 12px;
+    font-weight: 600;
+  }
+  .steps-title {
+    font-family: 'Fraunces', serif;
+    font-size: 22px;
+    font-weight: 500;
+    line-height: 1.15;
+    color: var(--ink);
+    margin-bottom: 12px;
+    letter-spacing: -0.3px;
+  }
+  .steps-title em { font-style: italic; color: var(--accent); }
+  .steps-intro {
+    font-size: 13px;
+    line-height: 1.5;
+    color: var(--ink-soft);
+    margin-bottom: 14px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid var(--line-soft);
+  }
+  .steps-intro strong { color: var(--ink); font-weight: 600; }
+  .steps-list {
     list-style: none;
     padding: 0;
+    margin-bottom: 14px;
+    counter-reset: stepcount;
   }
-  .danger-list li {
-    font-size: 14.5px;
-    line-height: 1.55;
-    color: var(--ink-soft);
-    padding: 12px 0 12px 22px;
+  .steps-list li {
+    counter-increment: stepcount;
+    font-size: 13px;
+    line-height: 1.4;
+    color: var(--ink);
+    padding: 7px 0 7px 30px;
     border-top: 1px solid var(--line-soft);
     position: relative;
   }
-  .danger-list li:last-child { border-bottom: 1px solid var(--line-soft); }
-  .danger-list li::before {
-    content: '—';
+  .steps-list li:last-child { border-bottom: 1px solid var(--line-soft); }
+  .steps-list li::before {
+    content: counter(stepcount, decimal-leading-zero);
     position: absolute;
-    left: 0; top: 12px;
+    left: 0; top: 7px;
+    font-family: 'Fraunces', serif;
+    font-style: italic;
     color: var(--accent);
-    font-weight: 600;
-  }
-  .danger-list li strong { color: var(--ink); font-weight: 600; }
-
-  /* === БЛОК АЛЕКСА === */
-  .alex-block {
-    background: var(--bg-card);
-    padding: 28px 24px;
-    margin: 32px 0 24px;
-    border-radius: 6px;
-    border: 1px solid var(--line);
-  }
-  .alex-from {
-    display: flex;
-    align-items: center;
-    gap: 14px;
-    margin-bottom: 18px;
-    padding-bottom: 18px;
-    border-bottom: 1px solid var(--line-soft);
-  }
-  .alex-avatar {
-    width: 48px; height: 48px;
-    border-radius: 50%;
-    background: linear-gradient(135deg, var(--accent), var(--warm));
-    color: var(--bg-cream);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: 'Fraunces', serif;
-    font-size: 18px;
+    font-size: 12.5px;
     font-weight: 500;
-    font-style: italic;
-    flex-shrink: 0;
   }
-  .alex-meta { flex: 1; }
-  .alex-name {
-    font-family: 'Fraunces', serif;
-    font-size: 17px;
-    color: var(--ink);
-    font-weight: 500;
-    line-height: 1.2;
-    margin-bottom: 2px;
-  }
-  .alex-role {
+  .steps-after {
     font-size: 12px;
+    line-height: 1.5;
     color: var(--ink-mute);
-    letter-spacing: 0.2px;
-  }
-  .alex-text {
-    font-size: 14.5px;
-    line-height: 1.6;
-    color: var(--ink);
-    margin-bottom: 22px;
-  }
-  .alex-text p { margin-bottom: 12px; }
-  .alex-text p:last-child { margin-bottom: 0; }
-  .alex-text strong { font-weight: 600; color: var(--accent); }
-
-  .alex-sign {
-    font-family: 'Fraunces', serif;
     font-style: italic;
-    color: var(--ink-mute);
-    text-align: right;
-    margin-top: 16px;
-    font-size: 14px;
+    margin-bottom: 16px;
+    text-align: center;
   }
+  .btn-bottom { margin-top: auto; }
 
-  /* === ОФФЕР === */
+  /* === РЕЗУЛЬТАТ — ЭКРАН 4 (ОФФЕР) === */
   .offer-tag {
     font-size: 10px;
     letter-spacing: 3.5px;
     text-transform: uppercase;
     color: var(--accent);
-    margin-bottom: 16px;
+    margin-bottom: 12px;
     font-weight: 600;
+  }
+  .discount-line {
+    background: var(--accent);
+    color: var(--bg-cream);
+    text-align: center;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 10px 16px;
+    border-radius: 3px;
+    margin-bottom: 14px;
   }
   .offer-title {
     font-family: 'Fraunces', serif;
-    font-size: 32px;
-    font-weight: 400;
-    line-height: 1.1;
-    margin-bottom: 18px;
-    letter-spacing: -0.4px;
+    font-size: 26px;
+    font-weight: 500;
+    line-height: 1.15;
     color: var(--ink);
-    font-variation-settings: "opsz" 144;
+    margin-bottom: 14px;
+    letter-spacing: -0.3px;
   }
-  .offer-title em {
-    font-style: italic;
-    color: var(--accent);
-    font-weight: 400;
-  }
-  .offer-lead {
-    font-size: 15.5px;
-    line-height: 1.6;
+  .offer-title em { font-style: italic; color: var(--accent); }
+  .offer-text {
+    font-size: 13.5px;
+    line-height: 1.5;
     color: var(--ink-soft);
-    margin-bottom: 32px;
+    margin-bottom: 14px;
   }
+  .offer-text p { margin-bottom: 8px; }
+  .offer-text p:last-child { margin-bottom: 0; }
+  .offer-text strong { color: var(--ink); font-weight: 600; }
 
-  /* Бонус-блок */
-  .bonus-block {
-    background: var(--bg-cream);
-    border: 1px solid var(--accent-line);
-    padding: 22px 22px 24px;
-    margin-bottom: 28px;
-    border-radius: 6px;
-    position: relative;
-    overflow: hidden;
+  /* Список "что входит в консультацию" */
+  .offer-points {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 16px 0;
   }
-  .bonus-block::before {
+  .offer-points li {
+    font-size: 13.5px;
+    line-height: 1.5;
+    color: var(--ink);
+    padding: 9px 0 9px 26px;
+    border-top: 1px solid var(--line-soft);
+    position: relative;
+  }
+  .offer-points li:last-child { border-bottom: 1px solid var(--line-soft); }
+  .offer-points li::before {
     content: '';
     position: absolute;
-    top: -30px; right: -30px;
-    width: 100px; height: 100px;
-    background: var(--accent-soft);
+    left: 0; top: 17px;
+    width: 14px; height: 1px;
+    background: var(--accent);
+  }
+  .offer-points li strong { color: var(--accent); font-weight: 600; }
+
+  /* === ЯРКАЯ СКИДКА (новая) === */
+  .price-hero {
+    background: linear-gradient(135deg, var(--accent) 0%, var(--accent-deep) 100%);
+    color: var(--bg-cream);
+    padding: 18px 20px 16px;
+    margin-bottom: 14px;
+    border-radius: 6px;
+    position: relative;
+    box-shadow: 0 4px 20px rgba(107,45,45,0.25);
+    overflow: hidden;
+  }
+  .price-hero::after {
+    content: '';
+    position: absolute;
+    top: -40px; right: -40px;
+    width: 120px; height: 120px;
+    background: rgba(255,255,255,0.05);
     border-radius: 50%;
-    z-index: 0;
   }
-  .bonus-tag {
-    font-size: 10px;
-    letter-spacing: 3px;
-    text-transform: uppercase;
+  .price-badge {
+    position: absolute;
+    top: 10px;
+    right: 14px;
+    background: var(--bg-cream);
     color: var(--accent);
-    font-weight: 700;
-    margin-bottom: 12px;
-    position: relative;
-    z-index: 1;
-  }
-  .bonus-title {
     font-family: 'Fraunces', serif;
-    font-size: 21px;
-    font-weight: 500;
-    line-height: 1.25;
-    color: var(--ink);
-    margin-bottom: 10px;
-    letter-spacing: -0.2px;
+    font-style: italic;
+    font-weight: 600;
+    font-size: 16px;
+    padding: 6px 12px;
+    border-radius: 100px;
+    letter-spacing: -0.3px;
+    z-index: 2;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  }
+  .price-hero-row {
+    display: flex;
+    align-items: baseline;
+    gap: 14px;
+    margin-bottom: 6px;
     position: relative;
     z-index: 1;
   }
-  .bonus-title em { font-style: italic; color: var(--accent); }
-  .bonus-desc {
-    font-size: 14px;
-    line-height: 1.55;
-    color: var(--ink-soft);
+  .price-old-big {
+    font-family: 'Manrope', sans-serif;
+    font-size: 22px;
+    color: rgba(242,235,221,0.55);
+    text-decoration: line-through;
+    font-weight: 500;
+    line-height: 1;
+  }
+  .price-arrow {
+    font-family: 'Fraunces', serif;
+    font-size: 22px;
+    color: rgba(242,235,221,0.6);
+    font-style: italic;
+    line-height: 1;
+  }
+  .price-new-big {
+    font-family: 'Fraunces', serif;
+    font-size: 44px;
+    color: var(--bg);
+    font-weight: 500;
+    line-height: 1;
+    letter-spacing: -1px;
+    font-variation-settings: "opsz" 144;
+  }
+  .price-caption {
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: rgba(242,235,221,0.7);
+    font-weight: 500;
     position: relative;
     z-index: 1;
   }
 
-  /* Таймер */
-  .timer-block {
-    background: var(--ink);
-    color: var(--bg-cream);
-    padding: 18px 20px;
-    margin-bottom: 24px;
-    border-radius: 4px;
-    text-align: center;
+  /* === ТАЙМЕР ИНЛАЙН (новая) === */
+  .timer-inline {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 18px;
+    transition: opacity 0.3s;
   }
-  .timer-label {
-    font-size: 10px;
-    letter-spacing: 3px;
+  .timer-inline.expired { opacity: 0.5; }
+  .timer-inline-label {
+    font-size: 9.5px;
+    letter-spacing: 2.5px;
     text-transform: uppercase;
-    color: var(--bg-cream);
-    opacity: 0.65;
+    color: var(--ink-mute);
     font-weight: 600;
     margin-bottom: 8px;
   }
-  .timer-display {
+  .timer-inline-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--accent);
+  }
+  .timer-cell {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 40px;
+  }
+  .timer-num {
     font-family: 'Fraunces', serif;
-    font-size: 28px;
-    font-weight: 400;
-    color: var(--bg);
-    letter-spacing: 1px;
+    font-size: 26px;
+    font-weight: 500;
+    line-height: 1;
+    color: var(--accent);
     font-feature-settings: "tnum";
-    font-variation-settings: "opsz" 72;
+    letter-spacing: -0.5px;
   }
-  .timer-units {
-    font-size: 11px;
-    letter-spacing: 2px;
-    color: var(--bg-cream);
-    opacity: 0.55;
-    margin-top: 4px;
+  .timer-cap {
+    font-size: 9px;
+    letter-spacing: 1.5px;
     text-transform: uppercase;
+    color: var(--ink-mute);
+    margin-top: 4px;
+    font-weight: 500;
   }
-
-  /* CTA-блок */
-  .cta-block {
-    margin-bottom: 28px;
-  }
-  .cta-text {
-    font-size: 14.5px;
-    line-height: 1.6;
-    color: var(--ink-soft);
-    margin-bottom: 20px;
-  }
-  .cta-text p { margin-bottom: 10px; }
-  .cta-text p:last-child { margin-bottom: 0; }
-  .cta-text strong { color: var(--ink); font-weight: 600; }
-
-  /* === SLIDER ДЛЯ S === */
-  .s-soft {
-    background: var(--bg-card);
-    border: 1px solid var(--line);
-    padding: 24px;
-    margin-bottom: 24px;
-    border-radius: 6px;
-    text-align: center;
-  }
-  .s-soft p {
-    font-size: 14.5px;
-    line-height: 1.6;
-    color: var(--ink-soft);
-    margin-bottom: 16px;
+  .timer-sep {
+    font-family: 'Fraunces', serif;
+    font-size: 22px;
+    color: var(--accent);
+    line-height: 1;
+    margin-top: -6px;
+    opacity: 0.5;
   }
 
   /* === ПРОЧЕЕ === */
   .restart {
     text-align: center;
-    margin-top: 24px;
-    font-size: 12px;
+    margin-top: 20px;
+    font-size: 11.5px;
     color: var(--ink-mute);
     cursor: pointer;
     letter-spacing: 0.3px;
@@ -663,11 +718,11 @@
 
   .brand {
     text-align: center;
-    margin-top: 32px;
-    padding-top: 24px;
+    margin-top: 24px;
+    padding-top: 18px;
     border-top: 1px solid var(--line-soft);
     font-family: 'Fraunces', serif;
-    font-size: 12px;
+    font-size: 11px;
     color: var(--ink-faint);
     letter-spacing: 1.5px;
     font-style: italic;
@@ -675,18 +730,24 @@
 
   /* === АДАПТИВ === */
   @media (max-width: 380px) {
-    .wrap { padding: 24px 18px 40px; }
-    .intro-title { font-size: 36px; }
-    .q-text { font-size: 23px; }
-    .result-type { font-size: 32px; }
-    .offer-title { font-size: 27px; }
-    .timer-display { font-size: 24px; }
+    .wrap { padding: 18px 16px 28px; }
+    .intro-title { font-size: 34px; }
+    .q-text { font-size: 21px; }
+    .result-type { font-size: 23px; }
+    .pain-title, .offer-title { font-size: 25px; }
+    .steps-title { font-size: 20px; }
+    .steps-list li { font-size: 12.5px; padding: 6px 0 6px 28px; }
+    .price-new-big { font-size: 38px; }
+    .price-old-big, .price-arrow { font-size: 18px; }
+    .timer-num { font-size: 22px; }
   }
   @media (min-width: 600px) {
     .intro-title { font-size: 50px; }
-    .q-text { font-size: 30px; }
-    .result-type { font-size: 44px; }
-    .offer-title { font-size: 38px; }
+    .q-text { font-size: 28px; }
+    .result-type { font-size: 32px; }
+    .pain-title, .offer-title { font-size: 34px; }
+    .steps-title { font-size: 28px; }
+    .price-new-big { font-size: 52px; }
   }
 </style>
 </head>
@@ -722,7 +783,7 @@
     <div class="q-num" id="qNum">Вопрос 1 из 13</div>
     <div class="q-text" id="qText"></div>
     <div class="options" id="options"></div>
-    <div class="q-back hidden" id="qBack" onclick="goBack()">← Изменить предыдущий ответ</div>
+    <a class="q-consult" href="https://t.me/m/hmFZwqauYjcy" target="_blank" rel="noopener">Получить консультацию</a>
   </div>
 
   <!-- АНАЛИЗ -->
@@ -734,65 +795,74 @@
     </div>
   </div>
 
-  <!-- РЕЗУЛЬТАТ -->
-  <div class="screen" id="screen-result">
+  <!-- ОКНО 1: РЕЗУЛЬТАТ + СЛЕПОЕ ПЯТНО -->
+  <div class="screen" id="screen-r1">
     <div class="result-tag">Ваш результат</div>
     <h2 class="result-type" id="resultType"></h2>
-    <div class="divider"></div>
 
-    <div class="result-mirror" id="resultMirror"></div>
+    <div class="meaning-block">
+      <div class="meaning-label">Что это значит</div>
+      <div class="meaning-text" id="meaningGeneral"></div>
+    </div>
 
-    <div class="blind-spot" id="blindSpot">
-      <div class="blind-spot-label">Слепое пятно</div>
+    <div class="meaning-block">
+      <div class="meaning-label">Что это значит для вас</div>
+      <div class="meaning-text" id="meaningPersonal"></div>
+    </div>
+
+    <div class="blind-spot-card">
+      <div class="blind-spot-label">Ваше слепое пятно</div>
       <div class="blind-spot-text" id="blindSpotText"></div>
     </div>
 
-    <!-- Блок-детектор появляется только если сработал -->
+    <button class="btn-primary" onclick="goToScreen('screen-r2')">Читать дальше</button>
+  </div>
+
+  <!-- ОКНО 2: ГЛАВНАЯ БОЛЬ -->
+  <div class="screen" id="screen-r2">
+    <div class="pain-tag">Что я вижу как специалист</div>
+    <h2 class="pain-title" id="painTitle"></h2>
+    <div class="pain-text" id="painText"></div>
+
     <div class="detector-block" id="detectorBlock" style="display:none;">
-      <div class="detector-label">Что я заметил как специалист</div>
-      <div class="detector-title" id="detectorTitle"></div>
+      <div class="detector-label">Дополнительно</div>
       <div class="detector-text" id="detectorText"></div>
     </div>
 
-    <div class="danger-section">
-      <h3>Что будет если <em>ничего не менять</em></h3>
-      <ul class="danger-list" id="dangerList"></ul>
+    <button class="btn-primary accent" onclick="goToScreen('screen-r3')">Узнать как это исправить</button>
+  </div>
+
+  <!-- ОКНО 3: 10 ШАГОВ -->
+  <div class="screen" id="screen-r3">
+    <div class="steps-tag">Что нужно сделать</div>
+    <h2 class="steps-title" id="stepsTitleEl">10 шагов <em>чтобы выйти из цикла</em></h2>
+    <div class="steps-intro" id="stepsIntro"></div>
+    <ol class="steps-list" id="stepsList"></ol>
+    <div class="steps-after">Каждый шаг — отдельная работа. Без них следующий не закрепляется.</div>
+    <button class="btn-primary accent btn-bottom" onclick="goToOffer()">Как с этим разобраться</button>
+  </div>
+
+  <!-- ОКНО 4: ОФФЕР СО СКИДКОЙ -->
+  <div class="screen" id="screen-r4">
+    <div class="offer-tag">Финальный шаг</div>
+    <h2 class="offer-title" id="offerTitle"></h2>
+
+    <div class="offer-text" id="offerText"></div>
+
+    <ul class="offer-points" id="offerPoints"></ul>
+
+    <div class="discount-line">Скидка 30% — только сейчас, после теста</div>
+
+    <div class="timer-inline" id="timerBlock">
+      <div class="timer-inline-label">Предложение действует</div>
+      <div class="timer-inline-row">
+        <div class="timer-cell"><div class="timer-num" id="tMinutes">05</div><div class="timer-cap">минут</div></div>
+        <div class="timer-sep">:</div>
+        <div class="timer-cell"><div class="timer-num" id="tSeconds">00</div><div class="timer-cap">секунд</div></div>
+      </div>
     </div>
 
-    <div class="alex-block" id="alexBlock">
-      <div class="alex-from">
-        <div class="alex-avatar">АК</div>
-        <div class="alex-meta">
-          <div class="alex-name">Алекс Коваль</div>
-          <div class="alex-role">Лайф-коуч · тревожная привязанность</div>
-        </div>
-      </div>
-      <div class="alex-text" id="alexText"></div>
-
-      <!-- Бонус-блок -->
-      <div class="bonus-block">
-        <div class="bonus-tag">Бонус к консультации</div>
-        <div class="bonus-title" id="bonusTitle"></div>
-        <div class="bonus-desc" id="bonusDesc"></div>
-      </div>
-
-      <!-- Таймер 48 часов -->
-      <div class="timer-block">
-        <div class="timer-label">До конца предложения</div>
-        <div class="timer-display" id="timerDisplay">48 : 00 : 00</div>
-        <div class="timer-units">часов · минут · секунд</div>
-      </div>
-
-      <div class="cta-block">
-        <div class="cta-text" id="ctaText"></div>
-      </div>
-
-      <a class="btn-primary accent" id="ctaBtn" href="https://t.me/m/hmFZwqauYjcy" target="_blank" rel="noopener">Записаться на консультацию</a>
-      <div class="alex-sign">— Алекс</div>
-    </div>
-
-    <span class="restart" onclick="restart()">Пройти ещё раз</span>
-    <div class="brand">Alex Koval · Attachment Theory</div>
+    <a class="btn-primary accent" id="ctaBtn" href="https://t.me/m/hmFZwqauYjcy" target="_blank" rel="noopener">Получить консультацию со скидкой</a>
   </div>
 
 </div>
@@ -800,12 +870,8 @@
 <script>
 // ============================================================
 // ВОПРОСЫ — 13 шт.
-// 5 на тревожность (A) | 4 на избегание (V) | 4 детектора (D)
-// type "S" — надёжный (нейтральные ответы)
-// type "D" в детекторных вопросах = тревожный сигнал
 // ============================================================
 const questions = [
-  // === ШКАЛА ТРЕВОЖНОСТИ (5) ===
   {
     text: "Любимый не отвечает на сообщения 2–3 часа. Что обычно у вас в голове?",
     options: [
@@ -846,8 +912,6 @@ const questions = [
       { l: "В", t: "Справляюсь сама. Просить — не умею.", type: "V" }
     ]
   },
-
-  // === ДЕТЕКТОР: РУМИНАЦИЯ / БЕССОННИЦА (1) ===
   {
     text: "Когда вы переживаете о близком человеке, ваш сон:",
     options: [
@@ -856,8 +920,6 @@ const questions = [
       { l: "В", t: "Засыпаю быстро, но просыпаюсь рано и больше не сплю.", type: "D" }
     ]
   },
-
-  // === ШКАЛА ИЗБЕГАНИЯ (4) ===
   {
     text: "Когда партнёр становится эмоционально слишком близок:",
     options: [
@@ -882,8 +944,6 @@ const questions = [
       { l: "В", t: "Утомляют. Не вижу в них смысла.", type: "V" }
     ]
   },
-
-  // === ДЕТЕКТОР: СОМАТИКА (1) ===
   {
     text: "Когда тревожно — тело реагирует:",
     options: [
@@ -892,8 +952,6 @@ const questions = [
       { l: "В", t: "Да. Желудок, головная боль, мышцы каменеют.", type: "D" }
     ]
   },
-
-  // === ШКАЛА ИЗБЕГАНИЯ (продолжение) ===
   {
     text: "После расставания (даже год назад):",
     options: [
@@ -902,8 +960,6 @@ const questions = [
       { l: "В", t: "Уже не помню. Ушла в работу сразу. Не оглядываюсь.", type: "V" }
     ]
   },
-
-  // === ДЕТЕКТОР: ИНТРУЗИВНЫЕ МЫСЛИ (1) ===
   {
     text: "Бывает что одна и та же мысль крутится в голове, и вы не можете её остановить?",
     options: [
@@ -912,8 +968,6 @@ const questions = [
       { l: "В", t: "Редко. Я умею «выключать» мысли.", type: "V" }
     ]
   },
-
-  // === ДЕТЕКТОР: РАСФОКУС / ГИПЕРКОНТРОЛЬ (1) ===
   {
     text: "Когда внутри что-то тревожит — что чаще всего происходит с вашей способностью работать и сосредотачиваться?",
     options: [
@@ -925,103 +979,150 @@ const questions = [
 ];
 
 // ============================================================
-// РЕЗУЛЬТАТЫ — короткие, маркетинговые, без полной картины
+// РЕЗУЛЬТАТЫ — контент для 4 экранов на каждый тип
 // ============================================================
 const results = {
   A: {
     type: 'Тревожный тип<br><em>привязанности</em>',
-    mirror: `<p>Когда он отвечает «ок» — ваша нервная система слышит угрозу. Когда он молчит 4 часа — вы уже похоронили отношения трижды. Когда вернулся и всё нормально — вы не выдыхаете, а <strong>ждёте следующего раза.</strong></p>`,
-    blindSpot: 'Большинство женщин с тревожным типом думают что «слишком сильно любят». На самом деле работает другой механизм — и пока вы его не видите, он выбирает вам мужчин за вас.',
-    danger: [
-      '<strong>Цикл повторится.</strong> С новыми мужчинами, в новых декорациях. С тем же финалом.',
-      '<strong>Тревога не уходит сама.</strong> Без работы она крепнет с возрастом — особенно после 35.',
-      '<strong>Стабильные мужчины не цепляют.</strong> И это самое опасное — потому что вы будете уходить от тех, кто бы вас закрыл.'
+    meaningGeneral: 'Тревожный тип формируется когда близкий человек был непредсказуем — то рядом, то холодный. Нервная система с тех пор живёт в режиме <strong>«ловить сигналы чтобы не потерять»</strong>.',
+    meaningPersonal: 'Вы любите глубоко — но любовь у вас всегда стоит рядом со страхом потери. Когда он молчит дольше обычного — внутри уже катастрофа, даже если объективно ничего не случилось.',
+    blindSpot: 'Вы думаете что «слишком сильно любите». На самом деле — <strong>вы выбираете именно тех</strong>, рядом с кем эта тревога активируется. Стабильный мужчина у вас не вызывает «искру». Вы это сами замечали — и не поняли почему.',
+
+    painTitle: 'Ваша главная боль <em>не в нём</em>',
+    painText: `<p>Каждый цикл одинаковый. Эйфория. Первый сигнал что он «остыл» — и вы накручиваете, проверяете, ждёте. Пишете, обижаетесь. Он отстраняется. Вы паникуете и делаете <strong>ещё больше</strong>. Он уходит.</p><p>Три месяца плачете. Год отходите. Через год встречаете нового — точно такого же.</p><p><strong>Боль не в конкретном мужчине.</strong> Боль в том что эта программа крутится в вас сама. А вы её не видите.</p>`,
+
+    stepsIntro: 'Чтобы выйти из тревожного цикла — нужно пройти эти этапы <strong>по порядку</strong>. Пропустить нельзя.',
+    stepsList: [
+      'Распознать свой паттерн в момент его активации',
+      'Остановить триггер до того как мозг ушёл в накручивание',
+      'Сформировать новый внутренний голос вместо тревожного',
+      'Переучить нервную систему на ощущение безопасности',
+      'Закрыть детский дефицит — без этого новый паттерн не закрепится',
+      'Перестроить телесные реакции на близость и дистанцию',
+      'Научиться выбирать стабильных мужчин — и не уходить от них',
+      'Выработать навык говорить о потребностях прямо',
+      'Перестать ждать что мужчина «должен догадаться сам»',
+      'Жить из ощущения что вы любимы. Даже когда он не отвечает 4 часа'
     ],
-    alex: `
-      <p>Если вы узнали себя — это не случайно.</p>
-      <p>Я работаю именно с тревожной привязанностью у женщин. На консультации мы за час разберём что у вас активирует тревогу, какой <strong>конкретно</strong> ваш цикл, и с чего начинать.</p>
-    `,
-    bonusTitle: 'PDF-инструкция <em>«Стоп-тревога»</em>',
-    bonusDesc: '7 техник чтобы остановить накручивание за 60 секунд когда он не отвечает. Получаете в подарок к консультации — без доплат.',
-    cta: `<p><strong>Только в течение 48 часов после теста.</strong> Дальше PDF не входит в стандартную консультацию.</p><p>Запишитесь на консультацию — я отвечу лично и предложу время.</p>`
+
+    offerTitle: 'Я <em>помогу вам</em> разорвать этот цикл',
+    offerText: '<p>Я работаю именно с тревожной привязанностью у женщин. За одну консультацию мы пройдём <strong>три блока</strong> работы — и у вас будет ясность, которой сейчас нет.</p>',
+    offerPoints: [
+      '<strong>Соберу вашу карту тревоги.</strong> Что её активирует, как вы реагируете в моменте, какой именно цикл крутится у вас.',
+      '<strong>Покажу слепые точки.</strong> Те механизмы, которые вы сами не видите — но именно они выбирают вам мужчин и держат в цикле.',
+      '<strong>Дам конкретные техники.</strong> Не общие. Точечные — под вашу нервную систему, ваш тип реакций. И план: с чего начинать.'
+    ],
+    bonusText: 'PDF-инструкция <strong>«Стоп-тревога: 7 техник»</strong> в подарок к консультации'
   },
 
   AV: {
     type: 'Тревожно-избегающий<br><em>тип</em>',
-    mirror: `<p>Вы хотите близости — и не выносите её. Это <strong>не противоречие.</strong> Это ваша система.</p><p>Когда его нет — задыхаетесь. Когда рядом — задыхаетесь тоже, но по-другому.</p>`,
-    blindSpot: 'Это самый редкий тип — около 7% людей. И самый сложный, потому что внутри вас две программы воюют 24/7. «Полюби себя» здесь не работает в принципе — вы не знаете какую часть себя любить.',
-    danger: [
-      '<strong>Мужчины уходят сами.</strong> Через полгода-год. Не понимая что происходит.',
-      '<strong>Сама из этого не выходит никто.</strong> Это та тема где общие книги по психологии не работают.',
-      '<strong>С возрастом конфликт усиливается.</strong> И вы остаётесь либо одна, либо рядом с тем кого не уважаете.'
+    meaningGeneral: 'Это самый редкий тип — около 7% людей. Формируется когда близкий человек был одновременно <strong>и нужен, и опасен</strong>. Внутри живут две программы — тяга и убегание — и они воюют друг с другом постоянно.',
+    meaningPersonal: 'Когда его нет — вы задыхаетесь. Когда рядом — задыхаетесь по-другому. Тянетесь, потом отдёргиваетесь. Зовёте, потом исчезаете сами. Вы не понимаете чего хотите — и это вас изматывает больше всего.',
+    blindSpot: 'Вы думаете что «не встретили своего». На самом деле — <strong>вы сами уходите</strong> от тех кто подходит, и держитесь за тех кто не подходит. Не из вредности. Это срабатывает раньше чем вы успеваете это заметить.',
+
+    painTitle: 'Ваша боль — <em>в самом конфликте</em>',
+    painText: `<p>Мужчины уходят. Через полгода-год. Не понимая что произошло. Те кто остаётся — те кого вы не уважаете, потому что «настоящий мужчина не выдержал бы это».</p><p>Вы умная, успешная, красивая. Но в отношениях вас <strong>«кидает из крайности в крайность»</strong>. Вы видите свой потенциал — и видите что он не реализуется именно здесь.</p><p>Сама из этого никто не выходит. И годы идут. И вы это знаете.</p>`,
+
+    stepsIntro: 'У вас внутри <strong>две программы</strong>. Распутать их можно — но только в правильном порядке. Иначе старый сценарий побеждает.',
+    stepsList: [
+      'Распознать в моменте — какая программа сейчас за рулём',
+      'Остановить переключение «тяну-убегаю» до автоматического срабатывания',
+      'Понять откуда внутри обе программы — без этого они вернутся',
+      'Создать «третью точку» — где вы сами, а не в одном из режимов',
+      'Переучить телесные реакции на близость',
+      'Восстановить контакт с тем что вы реально хотите',
+      'Сформировать навык оставаться в близости без побега',
+      'Сформировать навык выдерживать отдельность без паники',
+      'Научиться выбирать партнёра под зрелую часть, а не под травму',
+      'Закрепить новый сценарий — без этого старый победит'
     ],
-    alex: `
-      <p>Это самый сложный тип. Не буду вам врать.</p>
-      <p>Но это и самый интересный для работы — когда внутренний конфликт распутывается, женщины которые годами не могли построить отношения, выходят на стабильность <strong>буквально за месяцы.</strong></p>
-    `,
-    bonusTitle: 'PDF-инструкция <em>«Двойная программа»</em>',
-    bonusDesc: 'Как разорвать цикл «тяну — убегаю» и понять какая часть вас сейчас за рулём. Получаете в подарок к консультации.',
-    cta: `<p><strong>Только в течение 48 часов после теста.</strong> Дальше PDF не входит в стандартную консультацию.</p><p>Запишитесь — на консультации я расскажу с чего начинать именно в вашем случае.</p>`
+
+    offerTitle: 'Я <em>помогу вам</em> распутать это',
+    offerText: '<p>Тревожно-избегающий — самый сложный тип. Сама из него не выходит никто. На консультации мы пройдём <strong>три блока</strong> работы.</p>',
+    offerPoints: [
+      '<strong>Разделю две программы.</strong> Покажу когда работает тяга, а когда — убегание. И что включает переключение.',
+      '<strong>Найду «третью точку».</strong> Это позиция где вы сами, а не одна из ваших противоположных частей. Без неё конфликт не распутывается.',
+      '<strong>Дам план в правильном порядке.</strong> С двойной программой шаги нельзя путать — иначе старый сценарий побеждает.'
+    ],
+    bonusText: 'PDF-инструкция <strong>«Двойная программа: как распутать»</strong> в подарок к консультации'
   },
 
   V: {
     type: 'Избегающий тип<br><em>привязанности</em>',
-    mirror: `<p>Вы справляетесь сами. Всегда справлялись. Это ваш главный <strong>ресурс — и ваша главная клетка.</strong></p><p>Хороший мужчина у вас вызывает скуку. Тот, кто явно не подходит — не вызывает ничего. И это удобно.</p>`,
-    blindSpot: 'Большинство избегающих не считают что у них «проблемы с привязанностью». Они считают что они «сильные и независимые». Это и есть ловушка — потому что система внутри не пускает близкого человека ровно туда, куда вам нужно.',
-    danger: [
-      '<strong>«Я не нашла своего».</strong> Эта фраза в 40+ — почти всегда про избегающий тип.',
-      '<strong>Чем дольше — тем сложнее выходить.</strong> В 25 лет это работа на 6 месяцев. В 45 — на пару лет.',
-      '<strong>Эмоциональное онемение.</strong> Постепенно теряется способность чувствовать ярко — и хорошее, и плохое.'
+    meaningGeneral: 'Избегающий тип формируется когда в детстве на близкого человека <strong>было нельзя опереться</strong> — и пришлось рано научиться справляться самой. Это была разумная адаптация. Сейчас она работает против вас.',
+    meaningPersonal: 'Вы справляетесь сама. Всегда справлялись. Хороший мужчина у вас вызывает скуку. Тот, кто не подходит — не вызывает ничего. И это удобно. Удобно — потому что не больно.',
+    blindSpot: 'Вы думаете что вы «сильная и независимая». На самом деле — <strong>система внутри не пускает</strong> близкого человека ровно туда, куда вам нужно. Вы это маскируете под «не нашла своего», но речь не про мужчин. Речь про вас.',
+
+    painTitle: 'Ваша боль <em>замаскирована</em>',
+    painText: `<p>Вы не плачете в подушку. Вы не накручиваете до утра. Вы умеете уходить в работу, в дело, в себя.</p><p>Но что-то <strong>не так</strong>. И вы это чувствуете. Когда подруги в отношениях. Когда мужчина уходит после 3 свиданий — и вам ни горячо, ни холодно. Когда лежите вечером одна и думаете «и хорошо, и не хорошо».</p><p>Это и есть боль. Не острая. <strong>Хроническая.</strong> С возрастом она становится сильнее — а способность чувствовать ярко уходит.</p>`,
+
+    stepsIntro: 'Научиться близости заново — реально. Но <strong>дозировка решает всё</strong>: одно неверное движение, и вы откатываетесь обратно в холод.',
+    stepsList: [
+      'Распознать момент когда вы автоматически закрываетесь',
+      'Понять откуда взялась эта реакция — без этого она вернётся',
+      'Восстановить контакт с собственными чувствами',
+      'Вернуть телу способность чувствовать близость как тепло',
+      'Научиться зависеть — и не чувствовать себя слабой',
+      'Перестать обесценивать стабильных мужчин',
+      'Сформировать новый язык близости — без потери себя',
+      'Открыться постепенно — без срыва назад в холод',
+      'Закрепить новый паттерн — без этого старый вернётся',
+      'Выбрать партнёра под зрелую часть, а не под привычку справляться одной'
     ],
-    alex: `
-      <p>Вам скорее всего не хочется это читать. Я понимаю — избегающие реже всего обращаются за помощью.</p>
-      <p>Но если вы дочитали — значит что-то откликнулось. На консультации я не «лезу в душу». Работа с избегающим типом устроена <strong>иначе</strong> — и я расскажу как именно.</p>
-    `,
-    bonusTitle: 'PDF-инструкция <em>«Близость без потери себя»</em>',
-    bonusDesc: '5 шагов чтобы открыться без ощущения что вы себя теряете. Написано специально для избегающего типа. Получаете к консультации.',
-    cta: `<p><strong>Только в течение 48 часов после теста.</strong> Дальше PDF не входит в стандартную консультацию.</p><p>Запишитесь на консультацию — я отвечу лично и предложу время.</p>`
+
+    offerTitle: 'Я <em>помогу вам</em> вернуть способность чувствовать',
+    offerText: '<p>С избегающим типом я не «лезу в душу» и не пытаюсь вас разговорить силой. Работа устроена иначе.</p>',
+    offerPoints: [
+      '<strong>Покажу автоматическое закрытие.</strong> Тот момент когда вы отключаетесь — и сами этого не замечаете. Без этого ничего не меняется.',
+      '<strong>Восстановлю контакт с телом.</strong> Близость должна стать теплом, а не угрозой. Это работа с конкретными ощущениями, не с разговорами.',
+      '<strong>Дам план открытия по шагам.</strong> Без срыва назад в холод. С избегающим типом важна точная дозировка — иначе откат гарантирован.'
+    ],
+    bonusText: 'PDF-инструкция <strong>«Близость без потери себя»</strong> в подарок к консультации'
   },
 
   S: {
     type: 'Надёжный тип<br><em>привязанности</em>',
-    mirror: `<p>Вам либо повезло — либо вы много над собой работали. Третьего обычно не бывает.</p><p>Вы умеете быть рядом и умеете отпускать. Не превращаете любого мужчину в проект «спасти, переделать, удержать».</p>`,
-    blindSpot: 'Около 50% людей имеют надёжный тип. Если у вас сейчас сложности в отношениях — проблема скорее не в вашем типе, а в том кто рядом. Это другая работа — и она тоже решаема.',
-    danger: [
-      '<strong>«Спасатель» — частая ловушка надёжных.</strong> Можно годами тащить тревожного или избегающего партнёра, теряя силы.',
-      '<strong>Ваши потребности уходят на второй план.</strong> Когда вы стабильны — другие неосознанно начинают опираться на вас чаще, чем нужно.',
-      '<strong>Партнёр с непроработанной привязанностью</strong> постепенно «вытягивает» вас в свой паттерн.'
+    meaningGeneral: 'Надёжный тип формируется когда в детстве рядом был стабильный близкий взрослый. Около <strong>50% людей</strong> имеют этот тип — но не у всех он сохраняется во взрослых отношениях.',
+    meaningPersonal: 'Вы умеете быть рядом и умеете отпускать. Конфликты вас не разрушают. Расставание больно — но не смертельно. Вы не превращаете мужчину в проект «спасти и переделать».',
+    blindSpot: 'Вы думаете что «у меня всё нормально». На самом деле — <strong>надёжные часто становятся «спасателями»</strong> для тревожных и избегающих. Вы тащите. Они опираются. И постепенно вас вытягивают в их паттерн — а вы это замечаете слишком поздно.',
+
+    painTitle: 'Ваша боль — в <em>несимметрии</em>',
+    painText: `<p>Вы стабильны. Поэтому окружающие — партнёры, родители, коллеги — неосознанно <strong>опираются на вас больше</strong>, чем нужно.</p><p>Вы не жалуетесь. Вы умеете. И от этого ваши потребности уходят на второй план — годами. Когда от вас все ждут что вы справитесь, становится сложно сказать что вам тяжело.</p><p>В какой-то момент вы понимаете что <strong>тащите всех</strong>. И никто не тащит вас.</p>`,
+
+    stepsIntro: 'Чтобы вернуть симметрию — нужно пройти эти этапы. Без них надёжность <strong>превращается в удобство для всех</strong>, кроме вас.',
+    stepsList: [
+      'Распознать момент когда вы автоматически берёте чужое',
+      'Перестать «спасать» и переделывать партнёра',
+      'Сформировать язык границ — мягкий, но ясный',
+      'Научиться говорить «нет» без чувства вины',
+      'Выбирать партнёра под равенство, а не под спасательство',
+      'Перестать брать на себя чужие задачи',
+      'Защищать своё время и силы — даже от близких',
+      'Озвучивать свои потребности до того как накопится обида',
+      'Видеть кто рядом — равный или паразит',
+      'Закрепить новый сценарий и не откатиться обратно'
     ],
-    alex: `
-      <p>Глубокая работа по привязанности вам скорее не нужна. Но я часто работаю с темами вокруг: партнёрский выбор, границы, самореализация.</p>
-      <p>Если откликается — приходите на разбор. За час станет понятно есть ли у нас что обсудить или у вас и так всё в порядке.</p>
-    `,
-    bonusTitle: 'PDF-разбор <em>«Партнёрский выбор»</em>',
-    bonusDesc: 'Как надёжному типу не залипнуть в роли «спасателя» и выбирать себе равного. Получаете к консультации.',
-    cta: `<p><strong>Только в течение 48 часов после теста.</strong> Дальше PDF не входит в стандартную консультацию.</p><p>Если хотите — запишитесь, час разговора покажет нужна ли работа.</p>`
+
+    offerTitle: 'Я <em>помогу вам</em> вернуть симметрию',
+    offerText: '<p>Глубокая работа по привязанности вам не нужна. Но я работаю с темами вокруг — где у надёжных самые частые потери: партнёрский выбор, границы, ловушка спасателя.</p>',
+    offerPoints: [
+      '<strong>Покажу где вы автоматически берёте чужое.</strong> Это происходит так быстро, что вы даже не успеваете решить — хотите ли.',
+      '<strong>Дам язык границ.</strong> Мягкий, но ясный. Без вины и без агрессии — то, чего обычно не хватает надёжным.',
+      '<strong>Разберу ваш партнёрский выбор.</strong> Кто рядом — равный или паразит. И почему вы выбрали именно так.'
+    ],
+    bonusText: 'PDF-разбор <strong>«Партнёрский выбор для надёжных»</strong> в подарок к консультации'
   }
 };
 
 // ============================================================
-// ДЕТЕКТОР — что добавляем если ≥2 тревожных ответа
+// ДЕТЕКТОР — текст когда сработал ≥2 D-ответа
 // ============================================================
-const detectorBlocks = {
-  // Для тревожного типа — детектор подсвечивает ОКР-подобную руминацию
-  A: {
-    title: 'У вас в ответах есть ещё кое-что — это меняет картину.',
-    text: 'Помимо тревожного типа, по вашим ответам видны признаки <strong>устойчивой руминации и соматизации</strong> — мысли крутятся, тело реагирует, сон ломается. Это значит что одной работы с привязанностью будет мало. На консультации я отдельно расскажу что с этим делать — и почему стандартные техники здесь не помогают.'
-  },
-  AV: {
-    title: 'У вас активирован «двойной фронт» — и это важно.',
-    text: 'К конфликту тяги-убегания добавляется устойчивый <strong>тревожный фон в теле и голове</strong>. Это типичная картина — и именно её сложнее всего распутать без специалиста. Расскажу на консультации с чего начинать.'
-  },
-  V: {
-    title: 'У вас не «холод» — у вас замороженная тревога.',
-    text: 'По ответам видно что под избеганием прячется <strong>сильный тревожный заряд</strong> — он уходит в тело и в работу. Это другая картина чем «классический избегающий», и работать с ней нужно иначе. Расскажу как.'
-  },
-  S: {
-    title: 'У вас надёжный тип — но есть тревожный фон.',
-    text: 'Привязанность здоровая. Но в ответах виден <strong>тревожный фон, бессонница или соматика.</strong> Это не про отношения — это про общую регуляцию. На консультации можем разобрать откуда это и что с этим делать.'
-  }
+const detectorText = {
+  A: 'Помимо тревожного типа, в ответах виден устойчивый <strong>тревожный фон</strong> — мысли крутятся, тело реагирует, сон ломается. Это значит что одной работы с привязанностью будет мало. На консультации расскажу что с этим делать.',
+  AV: 'К конфликту тяги-убегания добавляется устойчивый <strong>тревожный фон в теле и голове</strong>. Это типичная картина — и именно её сложнее всего распутать без специалиста.',
+  V: 'По ответам видно что под избеганием прячется <strong>сильный тревожный заряд</strong> — он уходит в тело и в работу. Это другая картина чем «классический избегающий».',
+  S: 'Привязанность здоровая. Но в ответах виден <strong>тревожный фон, бессонница или соматика</strong>. Это не про отношения — это про общую регуляцию.'
 };
 
 // ============================================================
@@ -1032,6 +1133,15 @@ let scores = { A: 0, S: 0, V: 0, D: 0 };
 let answers = [];
 let currentResultKey = null;
 let timerInterval = null;
+let offerStarted = false;
+let answerLock = false;
+
+// Безопасный localStorage (на случай инкогнито или ошибок)
+const safeStorage = {
+  get(key) { try { return localStorage.getItem(key); } catch(e) { return null; } },
+  set(key, val) { try { localStorage.setItem(key, val); } catch(e) {} },
+  remove(key) { try { localStorage.removeItem(key); } catch(e) {} }
+};
 
 function startQuiz() {
   document.getElementById('progress').classList.add('show');
@@ -1039,7 +1149,7 @@ function startQuiz() {
 }
 
 function showQuestion(idx) {
-  showScreen('screen-question');
+  goToScreen('screen-question');
   const q = questions[idx];
   document.getElementById('qNum').textContent = `Вопрос ${idx + 1} из ${questions.length}`;
   document.getElementById('qText').textContent = q.text;
@@ -1057,24 +1167,15 @@ function showQuestion(idx) {
     optsEl.appendChild(div);
   });
 
-  const back = document.getElementById('qBack');
-  if (idx > 0) back.classList.remove('hidden');
-  else back.classList.add('hidden');
-
+  answerLock = false;
   updateProgress(idx);
-  window.scrollTo(0, 0);
 }
 
 function selectAnswer(type) {
-  // фиксируем ответ
-  if (current < answers.length) {
-    // если возвращались назад — корректируем счёт
-    const prev = answers[current];
-    if (scores[prev] > 0) scores[prev]--;
-    answers[current] = type;
-  } else {
-    answers.push(type);
-  }
+  if (answerLock) return;
+  answerLock = true;
+
+  answers.push(type);
   scores[type]++;
 
   if (current < questions.length - 1) {
@@ -1082,17 +1183,6 @@ function selectAnswer(type) {
     showQuestion(current);
   } else {
     runAnalysis();
-  }
-}
-
-function goBack() {
-  if (current > 0) {
-    current--;
-    // откатываем последний ответ из счёта
-    const last = answers[current];
-    if (scores[last] > 0) scores[last]--;
-    answers.pop();
-    showQuestion(current);
   }
 }
 
@@ -1104,7 +1194,7 @@ function updateProgress(idx) {
 
 function runAnalysis() {
   document.getElementById('progress').classList.remove('show');
-  showScreen('screen-analyzing');
+  goToScreen('screen-analyzing');
 
   const phrases = [
     'Анализирую ваши ответы…',
@@ -1125,14 +1215,12 @@ function runAnalysis() {
 }
 
 function getResultKey() {
-  // суммируем только A/S/V (без детекторов)
   const total = scores.A + scores.S + scores.V;
   if (total === 0) return 'S';
   const aPct = scores.A / total;
   const vPct = scores.V / total;
   const sPct = scores.S / total;
 
-  // тревожно-избегающий
   if (aPct >= 0.30 && vPct >= 0.30 && Math.abs(scores.A - scores.V) <= 2) {
     return 'AV';
   }
@@ -1146,83 +1234,95 @@ function showResult() {
   currentResultKey = key;
   const r = results[key];
 
+  // Окно 1
   document.getElementById('resultType').innerHTML = r.type;
-  document.getElementById('resultMirror').innerHTML = r.mirror;
-  document.getElementById('blindSpotText').textContent = r.blindSpot;
+  document.getElementById('meaningGeneral').innerHTML = r.meaningGeneral;
+  document.getElementById('meaningPersonal').innerHTML = r.meaningPersonal;
+  document.getElementById('blindSpotText').innerHTML = r.blindSpot;
 
-  // Детекторный блок появляется если ≥2 тревожных детектор-ответа
+  // Окно 2 — главная боль + детектор
+  document.getElementById('painTitle').innerHTML = r.painTitle;
+  document.getElementById('painText').innerHTML = r.painText;
+
   if (scores.D >= 2) {
-    const det = detectorBlocks[key];
-    document.getElementById('detectorTitle').textContent = det.title;
-    document.getElementById('detectorText').innerHTML = det.text;
+    document.getElementById('detectorText').innerHTML = detectorText[key];
     document.getElementById('detectorBlock').style.display = 'block';
   } else {
     document.getElementById('detectorBlock').style.display = 'none';
   }
 
-  // Опасности
-  const dl = document.getElementById('dangerList');
-  dl.innerHTML = '';
-  r.danger.forEach(item => {
+  // Окно 3 — шаги
+  document.getElementById('stepsIntro').innerHTML = r.stepsIntro || '';
+  const stepsList = document.getElementById('stepsList');
+  stepsList.innerHTML = '';
+  r.stepsList.forEach(s => {
     const li = document.createElement('li');
-    li.innerHTML = item;
-    dl.appendChild(li);
+    li.textContent = s;
+    stepsList.appendChild(li);
   });
 
-  // Алекс + бонус + CTA
-  document.getElementById('alexText').innerHTML = r.alex;
-  document.getElementById('bonusTitle').innerHTML = r.bonusTitle;
-  document.getElementById('bonusDesc').textContent = r.bonusDesc;
-  document.getElementById('ctaText').innerHTML = r.cta;
+  // Окно 4 — оффер
+  document.getElementById('offerTitle').innerHTML = r.offerTitle;
+  document.getElementById('offerText').innerHTML = r.offerText;
 
-  // Запускаем таймер 48 часов
-  startTimer();
+  const pointsList = document.getElementById('offerPoints');
+  pointsList.innerHTML = '';
+  if (r.offerPoints) {
+    r.offerPoints.forEach(p => {
+      const li = document.createElement('li');
+      li.innerHTML = p;
+      pointsList.appendChild(li);
+    });
+  }
 
-  showScreen('screen-result');
+  goToScreen('screen-r1');
+}
+
+function goToScreen(id) {
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
   window.scrollTo(0, 0);
 }
 
-// ============================================================
-// 48-ЧАСОВОЙ ТАЙМЕР (привязан к первому прохождению)
-// ============================================================
-function startTimer() {
-  const STORAGE_KEY = 'attachment_test_deadline';
-  let deadline = localStorage.getItem(STORAGE_KEY);
-
-  if (!deadline) {
-    deadline = Date.now() + 48 * 60 * 60 * 1000;
-    localStorage.setItem(STORAGE_KEY, deadline);
-  } else {
-    deadline = parseInt(deadline);
+function goToOffer() {
+  goToScreen('screen-r4');
+  if (!offerStarted) {
+    startOfferTimer();
+    offerStarted = true;
   }
+}
+
+// ============================================================
+// 5-МИНУТНЫЙ ТАЙМЕР
+// ============================================================
+function startOfferTimer() {
+  const deadline = Date.now() + 5 * 60 * 1000;
+
+  const tMinutes = document.getElementById('tMinutes');
+  const tSeconds = document.getElementById('tSeconds');
+  const timerBlock = document.getElementById('timerBlock');
+  const ctaBtn = document.getElementById('ctaBtn');
+
+  const pad = n => n.toString().padStart(2, '0');
+
+  if (timerInterval) clearInterval(timerInterval);
 
   const tick = () => {
-    const now = Date.now();
-    const diff = deadline - now;
-
+    const diff = deadline - Date.now();
     if (diff <= 0) {
-      document.getElementById('timerDisplay').textContent = '00 : 00 : 00';
-      if (timerInterval) clearInterval(timerInterval);
+      tMinutes.textContent = '00';
+      tSeconds.textContent = '00';
+      timerBlock.classList.add('expired');
+      if (ctaBtn) ctaBtn.textContent = 'Записаться на консультацию';
+      clearInterval(timerInterval);
       return;
     }
-
-    const hours = Math.floor(diff / (1000 * 60 * 60));
-    const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-    const seconds = Math.floor((diff % (1000 * 60)) / 1000);
-
-    const pad = n => n.toString().padStart(2, '0');
-    document.getElementById('timerDisplay').textContent =
-      `${pad(hours)} : ${pad(minutes)} : ${pad(seconds)}`;
+    tMinutes.textContent = pad(Math.floor(diff / 60000));
+    tSeconds.textContent = pad(Math.floor((diff % 60000) / 1000));
   };
 
   tick();
-  if (timerInterval) clearInterval(timerInterval);
   timerInterval = setInterval(tick, 1000);
-}
-
-function showScreen(id) {
-  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
-  document.getElementById(id).classList.add('active');
 }
 
 function restart() {
@@ -1230,10 +1330,12 @@ function restart() {
   scores = { A: 0, S: 0, V: 0, D: 0 };
   answers = [];
   currentResultKey = null;
+  offerStarted = false;
+  answerLock = false;
   if (timerInterval) clearInterval(timerInterval);
+  safeStorage.remove('attachment_offer_deadline_v4');
   document.getElementById('progress').classList.remove('show');
-  showScreen('screen-intro');
-  window.scrollTo(0, 0);
+  goToScreen('screen-intro');
 }
 </script>
 </body>
